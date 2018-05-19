@@ -1,0 +1,23 @@
+﻿@model DotNet.Highcharts.Highcharts
+
+@{
+    ViewBag.Title = "Отчет по проектам";
+}
+
+<hr />
+
+<dl class="dl-horizontal">
+    <dt>Период</dt>
+    <dd>
+        @ViewBag.Begin - @ViewBag.End
+    </dd>
+
+    <dt>Категория</dt>
+    <dd>
+        @ViewBag.Category
+    </dd>
+</dl>
+
+<div>
+    @(Model)
+</div>

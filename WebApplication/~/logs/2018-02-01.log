@@ -1,0 +1,6 @@
+2018-02-01 16:34:49.2660 INFO Вход пользователя (ivankamaev@me.com, admin, 2)
+2018-02-01 16:34:53.8554 INFO Вход пользователя (ivankamaev@me.com, admin, 2)
+2018-02-01 16:35:05.4705 INFO Вход пользователя (galanchuk@mail.ru, user, 3)
+2018-02-01 16:35:16.6059 INFO Вход пользователя (galanchuk@mail.ru, user, 3)
+2018-02-01 16:35:16.6059 WARN Пользователь galanchuk@mail.ru не является администратором
+2018-02-01 16:35:20.9542 INFO Вход пользователя (galanchuk@mail.ru, user, 3)

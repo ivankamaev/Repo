@@ -1,0 +1,59 @@
+﻿@model WebApplication.Models.project_equipment
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы уверены, что хотите удалить?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Исполнитель проекта</dt>
+        <dd>
+            @ViewBag.ExecutorName @ViewBag.ExecutorLastname
+        </dd>
+
+        <dt>Место проекта</dt>
+        <dd>
+            @ViewBag.Place
+        </dd>
+
+        <dt>Наименование</dt>
+        <dd>
+            @Html.DisplayFor(model => model.equipment.name)
+        </dd>
+
+        <dt>Фирма</dt>
+        <dd>
+            @Html.DisplayFor(model => model.equipment.tech_models.tech_brands.name)
+        </dd>
+
+        <dt>Модель</dt>
+        <dd>
+            @Html.DisplayFor(model => model.equipment.tech_models.name)
+        </dd>
+
+        <dt>Количество</dt>
+        <dd>
+            @Html.DisplayFor(model => model.count)
+        </dd>
+
+        <dt>Заметки</dt>
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку", "Index", new { id = ViewBag.ID })
+        </div>
+    }
+</div>

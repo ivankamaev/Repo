@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebApplication.Models.user>
+
+@{
+    ViewBag.Title = "Пользователи";
+}
+
+<h2>Пользователи</h2>
+
+<table class="table">
+    <tr>
+        <td>@Html.ActionLink("Новый пользователь", "Create")</td>
+        <td></td>
+    </tr>
+</table>
+
+<table class="table">
+    <tr>
+        <th>@Html.ActionLink("Имя", "Index", new { sortOrder = ViewBag.NameSort })</th>
+        <th>E-mail</th>
+        <th>Телефон</th>
+        <th>Статус</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact.lastname) @Html.DisplayFor(modelItem => item.contact.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact.phone)
+            </td>
+            <td>
+                @{
+                    if (item.status == "admin")
+                    {
+                        @:Администратор
+                    } 
+                    else
+                    {
+                        if (item.status == "user")
+                        {
+                            @:Пользователь
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.status)
+                        }
+                    }
+
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.userID }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.userID })
+            </td>
+        </tr>
+    }
+
+</table>

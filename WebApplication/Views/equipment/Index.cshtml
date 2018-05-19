@@ -1,0 +1,57 @@
+﻿@model IEnumerable<WebApplication.Models.equipment>
+
+@{
+    ViewBag.Title = "Оборудование";
+}
+
+<h2>Оборудование</h2>
+
+<table class="table">
+    <tr>
+        <td>@Html.ActionLink("Новая единица", "Create")</td>
+        <td align="right">@Html.ActionLink("Фирмы", "Index", "tech_brands")<br />
+        @Html.ActionLink("Модели", "Index", "tech_models")</td>
+    </tr>
+</table>
+
+<table class="table">
+    <tr>
+        <th>@Html.ActionLink("Наименование", "Index", new { sortOrder = ViewBag.NameSort })</th>
+        <th>@Html.ActionLink("Фирма", "Index", new { sortOrder = ViewBag.BrandSort })</th>
+        <th>@Html.ActionLink("Модель", "Index", new { sortOrder = ViewBag.ModelSort })</th>
+        <th>@Html.ActionLink("Тип", "Index", new { sortOrder = ViewBag.TypeSort })</th>
+        <th>Маркировка</th>
+        <th>Количество</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tech_models.tech_brands.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tech_models.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tech_models.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.count)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.equipmentID }) |
+                @Html.ActionLink("Подробно", "Details", new { id = item.equipmentID }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.equipmentID })
+            </td>
+        </tr>
+    }
+
+</table>

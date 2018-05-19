@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebApplication.Models.tech_models>
+
+@{
+    ViewBag.Title = "Модели";
+}
+
+<h2>Модели</h2>
+
+<table class="table">
+    <tr>
+        <td>@Html.ActionLink("Новая модель", "Create")</td>
+        <td align="right">@Html.ActionLink("Оборудование", "Index", "equipment")<br />
+        @Html.ActionLink("Фирмы", "Index", "tech_brands")
+    </td>
+    </tr>
+</table>
+
+<table class="table">
+    <tr>
+        <th>@Html.ActionLink("Фирма", "Index", new { sortOrder = ViewBag.BrandSort })</th>
+        <th>@Html.ActionLink("Модель", "Index", new { sortOrder = ViewBag.NameSort })</th>
+        <th>@Html.ActionLink("Тип", "Index", new { sortOrder = ViewBag.TypeSort })</th>
+        <th>Характеристики</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tech_brands.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.characteristics)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.modelID }) |
+                @Html.ActionLink("Подробно", "Details", new { id = item.modelID }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.modelID })
+            </td>
+        </tr>
+    }
+
+</table>

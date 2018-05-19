@@ -1,0 +1,200 @@
+﻿@model WebApplication.Models.project
+
+@{
+    ViewBag.Title = "Подробно";
+}
+
+<h2>Подробно</h2>
+
+<div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>Создатель</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.user.contact.name) @Html.DisplayFor(model => model.user.contact.lastname)
+                </dd>
+
+                <dt>Заезд</dt>
+                <dd>
+                    @if (Model.arrival != null)
+                    {
+                        @Convert.ToDateTime(Model.arrival).ToString("dd.MM.yyyy hh:mm")
+                    }
+                </dd>
+
+                <dt>Монтаж</dt>
+                <dd>
+                    @if (Model.installation != null)
+                    {
+                        @Convert.ToDateTime(Model.installation).ToString("dd.MM.yyyy hh:mm")
+                    }
+                </dd>
+
+                <dt>Репетиции</dt>
+                <dd>
+                    @if (Model.rehearsal != null)
+                    {
+                        @Convert.ToDateTime(Model.rehearsal).ToString("dd.MM.yyyy hh:mm")
+                    }
+                </dd>
+
+                <dt>Начало</dt>
+                <dd>
+                    @if (Model.start != null)
+                    {
+                        @Convert.ToDateTime(Model.start).ToString("dd.MM.yyyy hh:mm")
+                    }
+                </dd>
+
+                <dt>Конец</dt>
+                <dd>
+                    @if (Model.finish != null)
+                    {
+                        @Convert.ToDateTime(Model.finish).ToString("dd.MM.yyyy hh:mm")
+                    }
+                </dd>
+
+                <dt>Демонтаж</dt>
+                <dd>
+                    @if (Model.deinstallation != null)
+                    {
+                        @Convert.ToDateTime(Model.deinstallation).ToString("dd.MM.yyyy hh:mm")
+                    }
+                </dd>
+
+                <dt>Отъезд</dt>
+                <dd>
+                    @if (Model.departure != null)
+                    {
+                        @Convert.ToDateTime(Model.departure).ToString("dd.MM.yyyy hh:mm")
+                    }
+                </dd>
+
+                <dt>Место</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.place.name)
+                </dd>
+
+                <dt>Тип проекта</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.type)
+                </dd>
+
+                <dt>Функция на проекте</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.worktype)
+                </dd>
+
+                <dt>Исполнитель</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.contact1.name) @Html.DisplayFor(model => model.contact1.lastname)
+                </dd>
+
+                <dt>Клиент</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.contact.name) @Html.DisplayFor(model => model.contact.lastname)
+                </dd>
+
+                <dt>Организатор</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.contact2.name) @Html.DisplayFor(model => model.contact2.lastname)
+                </dd>
+
+                <dt>Ведущий</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.contact3.name) @Html.DisplayFor(model => model.contact3.lastname)
+                </dd>
+
+                <dt>Контент</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.content)
+                </dd>
+
+                <dt>Заметки</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.note)
+                </dd>
+
+                <dt>Приход (нал)</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.receipts_cash)
+                </dd>
+
+                <dt>Приход (безнал)</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.receipts_noncash)
+                </dd>
+
+                <dt>Расход (нал)</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.expenditure_cash)
+                </dd>
+
+                <dt>Расход (безнал)</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.expenditure_noncash)
+                </dd>
+
+                <dt>Прибыль (нал)</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.profit_cash)
+                </dd>
+
+                <dt>Прибыль (безнал)</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.profit_noncash)
+                </dd>
+
+                <dt>Прибыль (итого)</dt>
+                <dd>
+                    @Html.DisplayFor(model => model.profit_total)
+                </dd>
+            </dl>
+    </div>
+            @if (ViewBag.model.Count == 0)
+            {
+                if (Model.createrID.ToString() == ViewBag.UID || Model.createrID == null || ViewBag.status == "admin")
+                {
+                    <p>@Html.ActionLink("Добавить оборудование", "Index", "project_equipment", new { id = Model.projectID }, null)</p>
+                }
+            }
+            else
+            {
+                <table class="table-bordered" width="50%">
+                    <caption>Список оборудования</caption>
+                    <tr>
+                        <th>Наименование</th>
+                        <th>Фирма</th>
+                        <th>Модель</th>
+                        <th>Количество</th>
+                    </tr>
+                    @for (int i = 0; i < ViewBag.model.Count; i++)
+                    {
+                        <tr>
+                            <td>@ViewBag.name[i]</td>
+                            <td>@ViewBag.brand[i]</td>
+                            <td>@ViewBag.model[i]</td>
+                            <td>@ViewBag.count[i]</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="4" align="right">@Html.ActionLink("Подробно", "Index", "project_equipment", new { id = Model.projectID }, null)</td>
+                    </tr>
+                </table>
+            }
+
+<br />
+    @if (Model.createrID.ToString() == ViewBag.UID || Model.createrID == null || ViewBag.status == "admin")
+    {
+        <p>
+            @Html.ActionLink("Изменить", "Edit", new { id = Model.projectID }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = Model.projectID }) |
+            @Html.ActionLink("Назад к списку проектов", "Index")
+        </p>
+    }
+    else
+    {
+        <p>
+            @Html.ActionLink("Назад к списку проектов", "Index")
+        </p>
+    }

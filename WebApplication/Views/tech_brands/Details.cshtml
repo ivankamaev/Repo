@@ -1,0 +1,28 @@
+﻿@model WebApplication.Models.tech_brands
+
+@{
+    ViewBag.Title = "Подробно";
+}
+
+<h2>Подробно</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Фирма</dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>Описание</dt>
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.brandID }) |
+    @Html.ActionLink("Удалить", "Delete", new { id = Model.brandID }) |
+    @Html.ActionLink("Назад к списку фирм", "Index")
+</p>

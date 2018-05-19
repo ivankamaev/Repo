@@ -1,0 +1,79 @@
+﻿@model IEnumerable<WebApplication.Models.project>
+
+@{
+    ViewBag.Title = "Проекты";
+}
+
+<h2>Проекты</h2>
+
+<table class="table">
+    <tr>
+        <td>@Html.ActionLink("Новый проект", "Create")</td>
+        <td align="right">@Html.ActionLink("Места", "Index", "places")</td>
+    </tr>
+</table>
+
+<table class="table">
+    <tr>
+        <th>@Html.ActionLink("Дата", "Index", new { sortOrder = ViewBag.DateSort })</th>
+        <th>@Html.ActionLink("Место", "Index", new { sortOrder = ViewBag.PlaceSort })</th>
+        <th>Тип проекта</th>
+        <th>Функция на проекте</th>
+        <th>Исполнитель</th>
+        <th>Клиент</th>
+        <th>Организатор</th>
+        <th>Ведущий</th>
+        <th>Прибыль итого</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @if (item.start != null)
+                {
+                    @Convert.ToDateTime(item.start).ToString("dd.MM.yyyy")
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.place.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.worktype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact1.name) @Html.DisplayFor(modelItem => item.contact1.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact.name) @Html.DisplayFor(modelItem => item.contact.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact2.name) @Html.DisplayFor(modelItem => item.contact2.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contact3.name) @Html.DisplayFor(modelItem => item.contact3.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.profit_total)
+            </td>
+            <td>
+                @if (item.createrID.ToString() == ViewBag.UID || item.createrID == null || ViewBag.status == "admin")
+                {
+                    @Html.ActionLink("Изменить", "Edit", new { id = item.projectID })@: |
+                    @Html.ActionLink("Подробно", "Details", new { id = item.projectID })@: |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.projectID })
+                }
+                else
+                {
+                    @Html.ActionLink("Подробно", "Details", new { id = item.projectID })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

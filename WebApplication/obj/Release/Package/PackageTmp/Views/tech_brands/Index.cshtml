@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebApplication.Models.tech_brands>
+
+@{
+    ViewBag.Title = "Фирмы";
+}
+
+<h2>Фирмы</h2>
+
+<table class="table">
+    <tr>
+        <td>@Html.ActionLink("Новая фирма", "Create")</td>
+        <td align="right">@Html.ActionLink("Оборудование", "Index", "equipment")<br />
+        @Html.ActionLink("Модели", "Index", "tech_models")
+    </td>
+    </tr>
+</table>
+
+<table class="table">
+    <tr>
+        <th>@Html.ActionLink("Фирма", "Index", new { sortOrder = ViewBag.BrandSort })</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.brandID }) |
+                @Html.ActionLink("Подробно", "Details", new { id = item.brandID }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.brandID })
+            </td>
+        </tr>
+    }
+
+</table>

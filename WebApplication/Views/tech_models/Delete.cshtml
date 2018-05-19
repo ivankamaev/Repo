@@ -1,0 +1,48 @@
+﻿@model WebApplication.Models.tech_models
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы уверены, что хотите удалить эту модель?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Модель</dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>Фирма</dt>
+        <dd>
+            @Html.DisplayFor(model => model.tech_brands.name)
+        </dd>
+
+        <dt>Тип</dt>
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>Характеристики</dt>
+        <dd>
+            @Html.DisplayFor(model => model.characteristics)
+        </dd>
+
+        <dt>Описание</dt>
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку моделей", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,58 @@
+﻿@model WebApplication.Models.place
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы уверены, что хотите удалить это место?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Название</dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>Тип</dt>
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>Адрес</dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>Город</dt>
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+        <dt>Телефон</dt>
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>E-mail</dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>Заметки</dt>
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку мест", "Index")
+        </div>
+    }
+</div>

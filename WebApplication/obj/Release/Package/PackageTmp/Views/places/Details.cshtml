@@ -1,0 +1,52 @@
+﻿@model WebApplication.Models.place
+
+@{
+    ViewBag.Title = "Подробно";
+}
+
+<h2>Подробно</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Название</dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>Тип</dt>
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>Адрес</dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>Город</dt>
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+        <dt>Телефон</dt>
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>E-mail</dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>Заметки</dt>
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.placeID }) |
+    @Html.ActionLink("Удалить", "Delete", new { id = Model.placeID }) |
+    @Html.ActionLink("Назад к списку мест", "Index")
+</p>

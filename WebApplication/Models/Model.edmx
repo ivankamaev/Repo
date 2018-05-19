@@ -1,0 +1,825 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище u0416457_systemModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="contacts">
+          <Key>
+            <PropertyRef Name="contactID" />
+          </Key>
+          <Property Name="contactID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="lastname" Type="varchar" MaxLength="50" />
+          <Property Name="organizationID" Type="int" />
+          <Property Name="position" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="note" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="equipment">
+          <Key>
+            <PropertyRef Name="equipmentID" />
+          </Key>
+          <Property Name="equipmentID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="modelID" Type="int" />
+          <Property Name="mark" Type="varchar" MaxLength="50" />
+          <Property Name="count" Type="int" />
+          <Property Name="note" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="organizations">
+          <Key>
+            <PropertyRef Name="organizationID" />
+          </Key>
+          <Property Name="organizationID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="note" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="places">
+          <Key>
+            <PropertyRef Name="placeID" />
+          </Key>
+          <Property Name="placeID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar" MaxLength="200" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="note" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="project_equipment">
+          <Key>
+            <PropertyRef Name="project_equipmentID" />
+          </Key>
+          <Property Name="project_equipmentID" Type="int" Nullable="false" />
+          <Property Name="projectID" Type="int" />
+          <Property Name="equipmentID" Type="int" />
+          <Property Name="count" Type="int" />
+          <Property Name="note" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="projects">
+          <Key>
+            <PropertyRef Name="projectID" />
+          </Key>
+          <Property Name="projectID" Type="int" Nullable="false" />
+          <Property Name="createrID" Type="int" />
+          <Property Name="arrival" Type="datetime" />
+          <Property Name="installation" Type="datetime" />
+          <Property Name="rehearsal" Type="datetime" />
+          <Property Name="start" Type="datetime" />
+          <Property Name="finish" Type="datetime" />
+          <Property Name="deinstallation" Type="datetime" />
+          <Property Name="departure" Type="datetime" />
+          <Property Name="placeID" Type="int" />
+          <Property Name="worktype" Type="varchar" MaxLength="15" />
+          <Property Name="executorID" Type="int" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="showmanID" Type="int" />
+          <Property Name="managerID" Type="int" />
+          <Property Name="clientID" Type="int" />
+          <Property Name="content" Type="varchar" MaxLength="200" />
+          <Property Name="note" Type="varchar" MaxLength="200" />
+          <Property Name="receipts_cash" Type="float" />
+          <Property Name="receipts_noncash" Type="float" />
+          <Property Name="expenditure_cash" Type="float" />
+          <Property Name="expenditure_noncash" Type="float" />
+          <Property Name="profit_cash" Type="float" />
+          <Property Name="profit_noncash" Type="float" />
+          <Property Name="profit_total" Type="float" />
+        </EntityType>
+        <EntityType Name="tech_brands">
+          <Key>
+            <PropertyRef Name="brandID" />
+          </Key>
+          <Property Name="brandID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tech_models">
+          <Key>
+            <PropertyRef Name="modelID" />
+          </Key>
+          <Property Name="modelID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="brandID" Type="int" />
+          <Property Name="characteristics" Type="varchar" MaxLength="200" />
+          <Property Name="description" Type="varchar" MaxLength="200" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" Nullable="false" />
+          <Property Name="contactID" Type="int" />
+          <Property Name="passwordhash" Type="varchar" MaxLength="200" />
+          <Property Name="status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK_Contacts_Organizations">
+          <End Role="organizations" Type="Self.organizations" Multiplicity="0..1" />
+          <End Role="contacts" Type="Self.contacts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="organizations">
+              <PropertyRef Name="organizationID" />
+            </Principal>
+            <Dependent Role="contacts">
+              <PropertyRef Name="organizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_TechModels">
+          <End Role="tech_models" Type="Self.tech_models" Multiplicity="0..1" />
+          <End Role="equipment" Type="Self.equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tech_models">
+              <PropertyRef Name="modelID" />
+            </Principal>
+            <Dependent Role="equipment">
+              <PropertyRef Name="modelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Client">
+          <End Role="contacts" Type="Self.contacts" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contacts">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Creater">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="createrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Executor">
+          <End Role="contacts" Type="Self.contacts" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contacts">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="executorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Manager">
+          <End Role="contacts" Type="Self.contacts" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contacts">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="managerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Places">
+          <End Role="places" Type="Self.places" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="places">
+              <PropertyRef Name="placeID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="placeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Showman">
+          <End Role="contacts" Type="Self.contacts" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contacts">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="showmanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectEquipment_Equipment">
+          <End Role="equipment" Type="Self.equipment" Multiplicity="0..1" />
+          <End Role="project_equipment" Type="Self.project_equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipment">
+              <PropertyRef Name="equipmentID" />
+            </Principal>
+            <Dependent Role="project_equipment">
+              <PropertyRef Name="equipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectEquipment_Projects">
+          <End Role="projects" Type="Self.projects" Multiplicity="0..1" />
+          <End Role="project_equipment" Type="Self.project_equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projects">
+              <PropertyRef Name="projectID" />
+            </Principal>
+            <Dependent Role="project_equipment">
+              <PropertyRef Name="projectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechModels_TechBrands">
+          <End Role="tech_brands" Type="Self.tech_brands" Multiplicity="0..1" />
+          <End Role="tech_models" Type="Self.tech_models" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tech_brands">
+              <PropertyRef Name="brandID" />
+            </Principal>
+            <Dependent Role="tech_models">
+              <PropertyRef Name="brandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Contacts">
+          <End Role="contacts" Type="Self.contacts" Multiplicity="0..1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contacts">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="contactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище u0416457_systemModelContainer">
+          <EntitySet Name="contacts" EntityType="Self.contacts" Schema="u0416457_admin" store:Type="Tables" />
+          <EntitySet Name="equipment" EntityType="Self.equipment" Schema="u0416457_admin" store:Type="Tables" />
+          <EntitySet Name="organizations" EntityType="Self.organizations" Schema="u0416457_admin" store:Type="Tables" />
+          <EntitySet Name="places" EntityType="Self.places" Schema="u0416457_admin" store:Type="Tables" />
+          <EntitySet Name="project_equipment" EntityType="Self.project_equipment" Schema="u0416457_admin" store:Type="Tables" />
+          <EntitySet Name="projects" EntityType="Self.projects" Schema="u0416457_admin" store:Type="Tables" />
+          <EntitySet Name="tech_brands" EntityType="Self.tech_brands" Schema="u0416457_admin" store:Type="Tables" />
+          <EntitySet Name="tech_models" EntityType="Self.tech_models" Schema="u0416457_admin" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="u0416457_admin" store:Type="Tables" />
+          <AssociationSet Name="FK_Contacts_Organizations" Association="Self.FK_Contacts_Organizations">
+            <End Role="organizations" EntitySet="organizations" />
+            <End Role="contacts" EntitySet="contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_TechModels" Association="Self.FK_Equipment_TechModels">
+            <End Role="tech_models" EntitySet="tech_models" />
+            <End Role="equipment" EntitySet="equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Client" Association="Self.FK_Project_Client">
+            <End Role="contacts" EntitySet="contacts" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Creater" Association="Self.FK_Project_Creater">
+            <End Role="users" EntitySet="users" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Executor" Association="Self.FK_Project_Executor">
+            <End Role="contacts" EntitySet="contacts" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Manager" Association="Self.FK_Project_Manager">
+            <End Role="contacts" EntitySet="contacts" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Places" Association="Self.FK_Project_Places">
+            <End Role="places" EntitySet="places" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Showman" Association="Self.FK_Project_Showman">
+            <End Role="contacts" EntitySet="contacts" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectEquipment_Equipment" Association="Self.FK_ProjectEquipment_Equipment">
+            <End Role="equipment" EntitySet="equipment" />
+            <End Role="project_equipment" EntitySet="project_equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectEquipment_Projects" Association="Self.FK_ProjectEquipment_Projects">
+            <End Role="projects" EntitySet="projects" />
+            <End Role="project_equipment" EntitySet="project_equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechModels_TechBrands" Association="Self.FK_TechModels_TechBrands">
+            <End Role="tech_brands" EntitySet="tech_brands" />
+            <End Role="tech_models" EntitySet="tech_models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Contacts" Association="Self.FK_Users_Contacts">
+            <End Role="contacts" EntitySet="contacts" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="u0416457_systemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="contactID" />
+          </Key>
+          <Property Name="contactID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="organizationID" Type="Int32" />
+          <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="organization" Relationship="Self.FK_Contacts_Organizations" FromRole="contacts" ToRole="organizations" />
+          <NavigationProperty Name="projects" Relationship="Self.FK_Project_Client" FromRole="contacts" ToRole="projects" />
+          <NavigationProperty Name="projects1" Relationship="Self.FK_Project_Executor" FromRole="contacts" ToRole="projects" />
+          <NavigationProperty Name="projects2" Relationship="Self.FK_Project_Manager" FromRole="contacts" ToRole="projects" />
+          <NavigationProperty Name="projects3" Relationship="Self.FK_Project_Showman" FromRole="contacts" ToRole="projects" />
+          <NavigationProperty Name="users" Relationship="Self.FK_Users_Contacts" FromRole="contacts" ToRole="users" />
+        </EntityType>
+        <EntityType Name="equipment">
+          <Key>
+            <PropertyRef Name="equipmentID" />
+          </Key>
+          <Property Name="equipmentID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modelID" Type="Int32" />
+          <Property Name="mark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tech_models" Relationship="Self.FK_Equipment_TechModels" FromRole="equipment" ToRole="tech_models" />
+          <NavigationProperty Name="project_equipment" Relationship="Self.FK_ProjectEquipment_Equipment" FromRole="equipment" ToRole="project_equipment" />
+        </EntityType>
+        <EntityType Name="organization">
+          <Key>
+            <PropertyRef Name="organizationID" />
+          </Key>
+          <Property Name="organizationID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="contacts" Relationship="Self.FK_Contacts_Organizations" FromRole="organizations" ToRole="contacts" />
+        </EntityType>
+        <EntityType Name="place">
+          <Key>
+            <PropertyRef Name="placeID" />
+          </Key>
+          <Property Name="placeID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="projects" Relationship="Self.FK_Project_Places" FromRole="places" ToRole="projects" />
+        </EntityType>
+        <EntityType Name="project_equipment">
+          <Key>
+            <PropertyRef Name="project_equipmentID" />
+          </Key>
+          <Property Name="project_equipmentID" Type="Int32" Nullable="false" />
+          <Property Name="projectID" Type="Int32" />
+          <Property Name="equipmentID" Type="Int32" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="equipment" Relationship="Self.FK_ProjectEquipment_Equipment" FromRole="project_equipment" ToRole="equipment" />
+          <NavigationProperty Name="project" Relationship="Self.FK_ProjectEquipment_Projects" FromRole="project_equipment" ToRole="projects" />
+        </EntityType>
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="projectID" />
+          </Key>
+          <Property Name="projectID" Type="Int32" Nullable="false" />
+          <Property Name="createrID" Type="Int32" />
+          <Property Name="arrival" Type="DateTime" Precision="3" />
+          <Property Name="installation" Type="DateTime" Precision="3" />
+          <Property Name="rehearsal" Type="DateTime" Precision="3" />
+          <Property Name="start" Type="DateTime" Precision="3" />
+          <Property Name="finish" Type="DateTime" Precision="3" />
+          <Property Name="deinstallation" Type="DateTime" Precision="3" />
+          <Property Name="departure" Type="DateTime" Precision="3" />
+          <Property Name="placeID" Type="Int32" />
+          <Property Name="worktype" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="executorID" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="showmanID" Type="Int32" />
+          <Property Name="managerID" Type="Int32" />
+          <Property Name="clientID" Type="Int32" />
+          <Property Name="content" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="receipts_cash" Type="Double" />
+          <Property Name="receipts_noncash" Type="Double" />
+          <Property Name="expenditure_cash" Type="Double" />
+          <Property Name="expenditure_noncash" Type="Double" />
+          <Property Name="profit_cash" Type="Double" />
+          <Property Name="profit_noncash" Type="Double" />
+          <Property Name="profit_total" Type="Double" />
+          <NavigationProperty Name="contact" Relationship="Self.FK_Project_Client" FromRole="projects" ToRole="contacts" />
+          <NavigationProperty Name="contact1" Relationship="Self.FK_Project_Executor" FromRole="projects" ToRole="contacts" />
+          <NavigationProperty Name="contact2" Relationship="Self.FK_Project_Manager" FromRole="projects" ToRole="contacts" />
+          <NavigationProperty Name="contact3" Relationship="Self.FK_Project_Showman" FromRole="projects" ToRole="contacts" />
+          <NavigationProperty Name="place" Relationship="Self.FK_Project_Places" FromRole="projects" ToRole="places" />
+          <NavigationProperty Name="project_equipment" Relationship="Self.FK_ProjectEquipment_Projects" FromRole="projects" ToRole="project_equipment" />
+          <NavigationProperty Name="user" Relationship="Self.FK_Project_Creater" FromRole="projects" ToRole="users" />
+        </EntityType>
+        <EntityType Name="tech_brands">
+          <Key>
+            <PropertyRef Name="brandID" />
+          </Key>
+          <Property Name="brandID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tech_models" Relationship="Self.FK_TechModels_TechBrands" FromRole="tech_brands" ToRole="tech_models" />
+        </EntityType>
+        <EntityType Name="tech_models">
+          <Key>
+            <PropertyRef Name="modelID" />
+          </Key>
+          <Property Name="modelID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="brandID" Type="Int32" />
+          <Property Name="characteristics" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="equipments" Relationship="Self.FK_Equipment_TechModels" FromRole="tech_models" ToRole="equipment" />
+          <NavigationProperty Name="tech_brands" Relationship="Self.FK_TechModels_TechBrands" FromRole="tech_models" ToRole="tech_brands" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" />
+          <Property Name="contactID" Type="Int32" />
+          <Property Name="passwordhash" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="contact" Relationship="Self.FK_Users_Contacts" FromRole="users" ToRole="contacts" />
+          <NavigationProperty Name="projects" Relationship="Self.FK_Project_Creater" FromRole="users" ToRole="projects" />
+        </EntityType>
+        <Association Name="FK_Contacts_Organizations">
+          <End Role="organizations" Type="Self.organization" Multiplicity="0..1" />
+          <End Role="contacts" Type="Self.contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="organizations">
+              <PropertyRef Name="organizationID" />
+            </Principal>
+            <Dependent Role="contacts">
+              <PropertyRef Name="organizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Client">
+          <End Role="contacts" Type="Self.contact" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contacts">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Executor">
+          <End Role="contacts" Type="Self.contact" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contacts">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="executorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Manager">
+          <End Role="contacts" Type="Self.contact" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contacts">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="managerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Showman">
+          <End Role="contacts" Type="Self.contact" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contacts">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="showmanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Contacts">
+          <End Role="contacts" Type="Self.contact" Multiplicity="0..1" />
+          <End Role="users" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="contacts">
+              <PropertyRef Name="contactID" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="contactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Equipment_TechModels">
+          <End Role="tech_models" Type="Self.tech_models" Multiplicity="0..1" />
+          <End Role="equipment" Type="Self.equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tech_models">
+              <PropertyRef Name="modelID" />
+            </Principal>
+            <Dependent Role="equipment">
+              <PropertyRef Name="modelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectEquipment_Equipment">
+          <End Role="equipment" Type="Self.equipment" Multiplicity="0..1" />
+          <End Role="project_equipment" Type="Self.project_equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="equipment">
+              <PropertyRef Name="equipmentID" />
+            </Principal>
+            <Dependent Role="project_equipment">
+              <PropertyRef Name="equipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Places">
+          <End Role="places" Type="Self.place" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="places">
+              <PropertyRef Name="placeID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="placeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectEquipment_Projects">
+          <End Role="projects" Type="Self.project" Multiplicity="0..1" />
+          <End Role="project_equipment" Type="Self.project_equipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="projects">
+              <PropertyRef Name="projectID" />
+            </Principal>
+            <Dependent Role="project_equipment">
+              <PropertyRef Name="projectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Creater">
+          <End Role="users" Type="Self.user" Multiplicity="0..1" />
+          <End Role="projects" Type="Self.project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="projects">
+              <PropertyRef Name="createrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TechModels_TechBrands">
+          <End Role="tech_brands" Type="Self.tech_brands" Multiplicity="0..1" />
+          <End Role="tech_models" Type="Self.tech_models" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tech_brands">
+              <PropertyRef Name="brandID" />
+            </Principal>
+            <Dependent Role="tech_models">
+              <PropertyRef Name="brandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="u0416457_systemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="contacts" EntityType="Self.contact" />
+          <EntitySet Name="equipments" EntityType="Self.equipment" />
+          <EntitySet Name="organizations" EntityType="Self.organization" />
+          <EntitySet Name="places" EntityType="Self.place" />
+          <EntitySet Name="project_equipment" EntityType="Self.project_equipment" />
+          <EntitySet Name="projects" EntityType="Self.project" />
+          <EntitySet Name="tech_brands" EntityType="Self.tech_brands" />
+          <EntitySet Name="tech_models" EntityType="Self.tech_models" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK_Contacts_Organizations" Association="Self.FK_Contacts_Organizations">
+            <End Role="organizations" EntitySet="organizations" />
+            <End Role="contacts" EntitySet="contacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Client" Association="Self.FK_Project_Client">
+            <End Role="contacts" EntitySet="contacts" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Executor" Association="Self.FK_Project_Executor">
+            <End Role="contacts" EntitySet="contacts" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Manager" Association="Self.FK_Project_Manager">
+            <End Role="contacts" EntitySet="contacts" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Showman" Association="Self.FK_Project_Showman">
+            <End Role="contacts" EntitySet="contacts" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Contacts" Association="Self.FK_Users_Contacts">
+            <End Role="contacts" EntitySet="contacts" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipment_TechModels" Association="Self.FK_Equipment_TechModels">
+            <End Role="tech_models" EntitySet="tech_models" />
+            <End Role="equipment" EntitySet="equipments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectEquipment_Equipment" Association="Self.FK_ProjectEquipment_Equipment">
+            <End Role="equipment" EntitySet="equipments" />
+            <End Role="project_equipment" EntitySet="project_equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Places" Association="Self.FK_Project_Places">
+            <End Role="places" EntitySet="places" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectEquipment_Projects" Association="Self.FK_ProjectEquipment_Projects">
+            <End Role="projects" EntitySet="projects" />
+            <End Role="project_equipment" EntitySet="project_equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Creater" Association="Self.FK_Project_Creater">
+            <End Role="users" EntitySet="users" />
+            <End Role="projects" EntitySet="projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TechModels_TechBrands" Association="Self.FK_TechModels_TechBrands">
+            <End Role="tech_brands" EntitySet="tech_brands" />
+            <End Role="tech_models" EntitySet="tech_models" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище u0416457_systemModelContainer" CdmEntityContainer="u0416457_systemEntities">
+          <EntitySetMapping Name="contacts">
+            <EntityTypeMapping TypeName="u0416457_systemModel.contact">
+              <MappingFragment StoreEntitySet="contacts">
+                <ScalarProperty Name="contactID" ColumnName="contactID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="organizationID" ColumnName="organizationID" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="equipments">
+            <EntityTypeMapping TypeName="u0416457_systemModel.equipment">
+              <MappingFragment StoreEntitySet="equipment">
+                <ScalarProperty Name="equipmentID" ColumnName="equipmentID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="modelID" ColumnName="modelID" />
+                <ScalarProperty Name="mark" ColumnName="mark" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="organizations">
+            <EntityTypeMapping TypeName="u0416457_systemModel.organization">
+              <MappingFragment StoreEntitySet="organizations">
+                <ScalarProperty Name="organizationID" ColumnName="organizationID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="places">
+            <EntityTypeMapping TypeName="u0416457_systemModel.place">
+              <MappingFragment StoreEntitySet="places">
+                <ScalarProperty Name="placeID" ColumnName="placeID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="project_equipment">
+            <EntityTypeMapping TypeName="u0416457_systemModel.project_equipment">
+              <MappingFragment StoreEntitySet="project_equipment">
+                <ScalarProperty Name="project_equipmentID" ColumnName="project_equipmentID" />
+                <ScalarProperty Name="projectID" ColumnName="projectID" />
+                <ScalarProperty Name="equipmentID" ColumnName="equipmentID" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projects">
+            <EntityTypeMapping TypeName="u0416457_systemModel.project">
+              <MappingFragment StoreEntitySet="projects">
+                <ScalarProperty Name="projectID" ColumnName="projectID" />
+                <ScalarProperty Name="createrID" ColumnName="createrID" />
+                <ScalarProperty Name="arrival" ColumnName="arrival" />
+                <ScalarProperty Name="installation" ColumnName="installation" />
+                <ScalarProperty Name="rehearsal" ColumnName="rehearsal" />
+                <ScalarProperty Name="start" ColumnName="start" />
+                <ScalarProperty Name="finish" ColumnName="finish" />
+                <ScalarProperty Name="deinstallation" ColumnName="deinstallation" />
+                <ScalarProperty Name="departure" ColumnName="departure" />
+                <ScalarProperty Name="placeID" ColumnName="placeID" />
+                <ScalarProperty Name="worktype" ColumnName="worktype" />
+                <ScalarProperty Name="executorID" ColumnName="executorID" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="showmanID" ColumnName="showmanID" />
+                <ScalarProperty Name="managerID" ColumnName="managerID" />
+                <ScalarProperty Name="clientID" ColumnName="clientID" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="receipts_cash" ColumnName="receipts_cash" />
+                <ScalarProperty Name="receipts_noncash" ColumnName="receipts_noncash" />
+                <ScalarProperty Name="expenditure_cash" ColumnName="expenditure_cash" />
+                <ScalarProperty Name="expenditure_noncash" ColumnName="expenditure_noncash" />
+                <ScalarProperty Name="profit_cash" ColumnName="profit_cash" />
+                <ScalarProperty Name="profit_noncash" ColumnName="profit_noncash" />
+                <ScalarProperty Name="profit_total" ColumnName="profit_total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tech_brands">
+            <EntityTypeMapping TypeName="u0416457_systemModel.tech_brands">
+              <MappingFragment StoreEntitySet="tech_brands">
+                <ScalarProperty Name="brandID" ColumnName="brandID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tech_models">
+            <EntityTypeMapping TypeName="u0416457_systemModel.tech_models">
+              <MappingFragment StoreEntitySet="tech_models">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="modelID" ColumnName="modelID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="brandID" ColumnName="brandID" />
+                <ScalarProperty Name="characteristics" ColumnName="characteristics" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="u0416457_systemModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="contactID" ColumnName="contactID" />
+                <ScalarProperty Name="passwordhash" ColumnName="passwordhash" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

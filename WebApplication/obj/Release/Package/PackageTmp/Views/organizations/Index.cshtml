@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebApplication.Models.organization>
+
+@{
+    ViewBag.Title = "Организации";
+}
+
+<h2>Организации</h2>
+
+<table class="table">
+    <tr>
+        <td>@Html.ActionLink("Новая организация", "Create")</td>
+        <td align="right">@Html.ActionLink("Контакты", "Index", "contacts")</td>
+    </tr>
+</table>
+
+<table class="table">
+    <tr>
+        <th>@Html.ActionLink("Название", "Index", new { sortOrder = ViewBag.NameSort })</th>
+        <th>Телефон</th>
+        <th>E-mail</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.organizationID }) |
+                @Html.ActionLink("Подробно", "Details", new { id = item.organizationID }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.organizationID })
+            </td>
+        </tr>
+    }
+
+</table>

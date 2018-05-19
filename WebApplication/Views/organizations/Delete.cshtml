@@ -1,0 +1,44 @@
+﻿@model WebApplication.Models.organization
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы уверены, что хотите удалить эту организацию?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Название</dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>Телефон</dt>
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>E-mail</dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>Заметки</dt>
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку организаций", "Index")
+        </div>
+    }
+</div>

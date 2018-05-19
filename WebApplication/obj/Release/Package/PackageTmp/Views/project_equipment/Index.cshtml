@@ -1,0 +1,79 @@
+﻿@model IEnumerable<WebApplication.Models.project_equipment>
+
+@{
+    ViewBag.Title = "Список";
+}
+
+<h2>Список аппаратуры</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Исполнитель проекта</dt>
+        <dd>
+            @ViewBag.ExecutorName @ViewBag.ExecutorLastname
+        </dd>
+
+        <dt>Место проекта</dt>
+        <dd>
+            @ViewBag.Place
+        </dd>
+
+        <dt>Дата проекта</dt>
+        <dd>
+            @ViewBag.Start
+        </dd>
+    </dl>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <table class="table">
+        <tr>
+            <th>Наименование</th>
+            <th>Фирма</th>
+            <th>Модель</th>
+            <th>Количество</th>
+            <th>Заметки</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.equipment.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.equipment.tech_models.tech_brands.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.equipment.tech_models.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.note)
+                </td>
+                @if (ViewBag.Hide == "no")
+                {
+                    <td>
+                        @Html.ActionLink("Изменить", "Edit", new { id = item.project_equipmentID }) |
+                        @Html.ActionLink("Удалить", "Delete", new { id = item.project_equipmentID })
+                    </td>
+                }
+            </tr>
+        }
+        <tr>
+            <td colspan="5">@Html.ActionLink("Назад к информации о проекте", "Details", "projects", new { id = ViewBag.ID }, null)</td>
+            @if (ViewBag.Hide == "no")
+            {
+                <td>@Html.ActionLink("Добавить", "Create", new { id = ViewBag.ID })</td>
+            }
+        </tr>
+    </table>
+}

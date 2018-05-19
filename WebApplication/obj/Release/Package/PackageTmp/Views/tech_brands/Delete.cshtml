@@ -1,0 +1,34 @@
+﻿@model WebApplication.Models.tech_brands
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы уверены, что хотите удалить эту фирму?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Фирма</dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>Описание</dt>
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку фирм", "Index")
+        </div>
+    }
+</div>

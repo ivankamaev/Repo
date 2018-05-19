@@ -1,0 +1,214 @@
+﻿@model WebApplication.Models.project
+
+@{
+    ViewBag.Title = "Изменение";
+}
+
+<h2>Изменение</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.projectID)
+        @Html.HiddenFor(model => model.createrID)
+
+        <div class="form-group">
+            @Html.Label("Заезд", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="arrival" name="arrival" type="datetime-local" value="@ViewBag.Arrival" />
+                @Html.ValidationMessageFor(model => model.arrival, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Монтаж", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="installation" name="installation" type="datetime-local" value="@ViewBag.Installation" />
+                @Html.ValidationMessageFor(model => model.installation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Репетиции", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="rehearsal" name="rehearsal" type="datetime-local" value="@ViewBag.Rehearsal" />
+                @Html.ValidationMessageFor(model => model.rehearsal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Начало", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="start" name="start" type="datetime-local" value="@ViewBag.Start" />
+                @Html.ValidationMessageFor(model => model.start, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Конец", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="finish" name="finish" type="datetime-local" value="@ViewBag.Finish" />
+                @Html.ValidationMessageFor(model => model.finish, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Демонтаж", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="deinstallation" name="deinstallation" type="datetime-local" value="@ViewBag.Deinstallation" />
+                @Html.ValidationMessageFor(model => model.deinstallation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Отъезд", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="departure" name="departure" type="datetime-local" value="@ViewBag.Departure" />
+                @Html.ValidationMessageFor(model => model.departure, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Место", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("placeID", null, "", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.placeID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Тип проекта", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Функция на проекте", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("worktype", null, "", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.worktype, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Исполнитель", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("executorID", null, "", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.executorID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Клиент", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("clientID", null, "", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.clientID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Организатор", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("managerID", null, "", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.managerID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Ведущий", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("showmanID", null, "", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.showmanID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Контент", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Заметки", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.note, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.note, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Приход (нал)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.receipts_cash, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.receipts_cash, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Приход (безнал)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.receipts_noncash, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.receipts_noncash, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Расход (нал)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.expenditure_cash, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.expenditure_cash, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Расход (безнал)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.expenditure_noncash, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.expenditure_noncash, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Прибыль (нал)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.profit_cash, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.profit_cash, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Прибыль (безнал)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.profit_noncash, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.profit_noncash, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Прибыль (итого)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.profit_total, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.profit_total, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Назад к списку проектов", "Index")
+</div>

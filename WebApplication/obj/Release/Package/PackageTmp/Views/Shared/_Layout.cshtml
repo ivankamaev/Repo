@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - CooperCan/BackgroundDJ</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/Highcharts-4.0.1/js/highcharts.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Проекты", "Index", "projects", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Контакты", "Index", "contacts", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Оборудование", "Index", "equipment", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Отчеты", "Index", "reports", new { area = "" }, new { @class = "navbar-brand" })
+                        if (((FormsIdentity)User.Identity).Ticket.UserData == "admin")
+                        {
+                            @Html.ActionLink("Пользователи", "Index", "users", new { area = "" }, new { @class = "navbar-brand" })
+                        }
+                    }
+                    else
+                    {
+                        @:<p class="navbar-right navbar-brand">Купер Может / BackgroundDJ</p>
+                    }
+                }
+            </div>
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    @Html.ActionLink("Выход", "Index", "login", new { logout = "yes" }, new { @class = "navbar-right navbar-brand" })
+                    @:<p class="navbar-right navbar-brand">Привет, @User.Identity.Name</p>
+                }
+            }
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Купер Может / BackgroundDJ</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Настройка отчета по исполнителям";
+}
+
+<h2>Отчет по исполнителям</h2>
+
+<h3>Укажите необходимый период и исполнителей</h3>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.Label("Период", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("period", null, "", htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Исполнители", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBox("executors", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Создать" class="btn btn-default " />
+            </div>
+        </div>
+    </div>
+}

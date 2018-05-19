@@ -1,0 +1,138 @@
+﻿@model WebApplication.Models.project
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы уверены, что хотите удалить этот проект?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Приезд</dt>
+        <dd>
+            @Html.DisplayFor(model => model.arrival)
+        </dd>
+
+        <dt>Монтаж</dt>
+        <dd>
+            @Html.DisplayFor(model => model.installation)
+        </dd>
+
+        <dt>Репетиции </dt>
+        <dd>
+            @Html.DisplayFor(model => model.rehearsal)
+        </dd>
+
+        <dt>Начало</dt>
+        <dd>
+            @Html.DisplayFor(model => model.start)
+        </dd>
+
+        <dt>Конец</dt>
+        <dd>
+            @Html.DisplayFor(model => model.finish)
+        </dd>
+
+        <dt>Демонтаж</dt>
+        <dd>
+            @Html.DisplayFor(model => model.deinstallation)
+        </dd>
+
+        <dt>Отъезд</dt>
+        <dd>
+            @Html.DisplayFor(model => model.departure)
+        </dd>
+
+        <dt>Место</dt>
+        <dd>
+            @Html.DisplayFor(model => model.place.name)
+        </dd>
+
+        <dt>Тип проекта</dt>
+        <dd>
+            @Html.DisplayFor(model => model.type)
+        </dd>
+
+        <dt>Функция на проекте</dt>
+        <dd>
+            @Html.DisplayFor(model => model.worktype)
+        </dd>
+
+        <dt>Исполнитель</dt>
+        <dd>
+            @Html.DisplayFor(model => model.contact.name) @Html.DisplayFor(model => model.contact.lastname)
+        </dd>
+
+        <dt>Клиент</dt>
+        <dd>
+            @Html.DisplayFor(model => model.contact1.name) @Html.DisplayFor(model => model.contact1.lastname)
+        </dd>
+
+        <dt>Организатор</dt>
+        <dd>
+            @Html.DisplayFor(model => model.contact2.name) @Html.DisplayFor(model => model.contact2.lastname)
+        </dd>
+
+        <dt>Ведущий</dt>
+        <dd>
+            @Html.DisplayFor(model => model.contact3.name) @Html.DisplayFor(model => model.contact3.lastname)
+        </dd>
+
+        <dt>Контент</dt>
+        <dd>
+            @Html.DisplayFor(model => model.content)
+        </dd>
+
+        <dt>Заметки</dt>
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+
+        <dt>Приход (нал)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.receipts_cash)
+        </dd>
+
+        <dt>Приход (безнал)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.receipts_noncash)
+        </dd>
+
+        <dt>Расход (нал)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.expenditure_cash)
+        </dd>
+
+        <dt>Расход (безнал)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.expenditure_noncash)
+        </dd>
+
+        <dt>Прибыль (нал)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.profit_cash)
+        </dd>
+
+        <dt>Прибыль (безнал)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.profit_noncash)
+        </dd>
+
+        <dt>Прибыль (итого)</dt>
+        <dd>
+            @Html.DisplayFor(model => model.profit_total)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку проектов", "Index")
+        </div>
+    }
+</div>

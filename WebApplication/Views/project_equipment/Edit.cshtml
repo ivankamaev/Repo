@@ -1,0 +1,76 @@
+﻿@model WebApplication.Models.project_equipment
+
+@{
+    ViewBag.Title = "Изменение";
+}
+
+<h2>Изменение</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.project_equipmentID)
+    @Html.HiddenFor(model => model.projectID)
+    @Html.HiddenFor(model => model.project.createrID)
+    @Html.HiddenFor(model => model.equipmentID)
+
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>Исполнитель проекта</dt>
+            <dd>
+                @ViewBag.ExecutorName @ViewBag.ExecutorLastname
+            </dd>
+
+            <dt>Место проекта</dt>
+            <dd>
+                @ViewBag.Place
+            </dd>
+
+            <dt>Наименование</dt>
+            <dd>
+                @Html.DisplayFor(model => model.equipment.name)
+            </dd>
+
+            <dt>Фирма</dt>
+            <dd>
+                @Html.DisplayFor(model => model.equipment.tech_models.tech_brands.name)
+            </dd>
+
+            <dt>Модель</dt>
+            <dd>
+                @Html.DisplayFor(model => model.equipment.tech_models.name)
+            </dd>
+        </dl>
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.Label("Количество", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.count, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.count, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Заметки", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.note, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.note, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Сохранить" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Назад к списку", "Index", new { id = ViewBag.ID })
+</div>

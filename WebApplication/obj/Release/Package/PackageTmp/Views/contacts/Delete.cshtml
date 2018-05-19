@@ -1,0 +1,58 @@
+﻿@model WebApplication.Models.contact
+
+@{
+    ViewBag.Title = "Удаление";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы уверены, что хотите удалить этот контакт?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Имя</dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>Фамилия</dt>
+        <dd>
+            @Html.DisplayFor(model => model.lastname)
+        </dd>
+
+        <dt>Организация</dt>
+        <dd>
+            @Html.DisplayFor(model => model.organization.name)
+        </dd>
+
+        <dt>Должность</dt>
+        <dd>
+            @Html.DisplayFor(model => model.position)
+        </dd>
+
+        <dt>Телефон</dt>
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>E-mail</dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>заметки</dt>
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку контактов", "Index")
+        </div>
+    }
+</div>
