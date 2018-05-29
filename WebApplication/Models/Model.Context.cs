@@ -25,14 +25,14 @@ namespace WebApplication.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<contact> contacts { get; set; }
+        public virtual DbSet<contact_old> contacts { get; set; }
         public virtual DbSet<equipment> equipments { get; set; }
-        public virtual DbSet<organization> organizations { get; set; }
-        public virtual DbSet<place> places { get; set; }
+        public virtual DbSet<organization_old> organizations { get; set; }
+        public virtual DbSet<place_old> places { get; set; }
         public virtual DbSet<project_equipment> project_equipment { get; set; }
-        public virtual DbSet<project> projects { get; set; }
+        public virtual DbSet<project_old> projects { get; set; }
         public virtual DbSet<tech_brands> tech_brands { get; set; }
         public virtual DbSet<tech_models> tech_models { get; set; }
-        public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<user_old> users { get; set; }
     }
 }

@@ -14,11 +14,12 @@ namespace WebApplication.Controllers
     [UserAuthorize]
     public class contactsController : Controller
     {
-        private u0416457_systemEntities db = new u0416457_systemEntities();
+       // private u0416457_systemEntities db = new u0416457_systemEntities();
+        private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index(string sortOrder)
         {
-            var contacts = db.contacts.Include(c => c.organization);
+            var contacts = db.contacts.Include(c => c.organizations);
             ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
             ViewBag.OrganizationSort = sortOrder == "Organization" ? "Organization desc" : "Organization";
             switch (sortOrder)
@@ -27,10 +28,10 @@ namespace WebApplication.Controllers
                     contacts = contacts.OrderByDescending(c => c.lastname);
                     break;
                 case "Organization":
-                    contacts = contacts.OrderBy(c => c.organization.name);
+                    contacts = contacts.OrderBy(c => c.organizations.name);
                     break;
                 case "Organization desc":
-                    contacts = contacts.OrderByDescending(c => c.organization.name);
+                    contacts = contacts.OrderByDescending(c => c.organizations.name);
                     break;
                 default:
                     contacts = contacts.OrderBy(c => c.lastname);
@@ -46,7 +47,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            contact contact = db.contacts.Find(id);
+            contacts contact = db.contacts.Find(id);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -58,9 +59,9 @@ namespace WebApplication.Controllers
         {
             ViewBag.organizationID = new SelectList(db.organizations, "organizationID", "name");
 
-            var contacts = db.contacts.Include(c => c.organization).OrderBy(c => c.contactID);
+            var contacts = db.contacts.Include(c => c.organizations).OrderBy(c => c.contactID);
             int i = 1;
-            foreach (contact c in contacts)
+            foreach (contacts c in contacts)
             {
                 if (i != c.contactID)
                 {
@@ -77,7 +78,7 @@ namespace WebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "contactID,name,lastname,organizationID,position,phone,email,note")] contact contact)
+        public ActionResult Create([Bind(Include = "contactID,name,lastname,organizationID,position,phone,email,note")] contacts contact)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +97,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            contact contact = db.contacts.Find(id);
+            contacts contact = db.contacts.Find(id);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -107,7 +108,7 @@ namespace WebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "contactID,name,lastname,organizationID,position,phone,email,note")] contact contact)
+        public ActionResult Edit([Bind(Include = "contactID,name,lastname,organizationID,position,phone,email,note")] contacts contact)
         {
             if (ModelState.IsValid)
             {
@@ -125,7 +126,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            contact contact = db.contacts.Find(id);
+            contacts contact = db.contacts.Find(id);
             if (contact == null)
             {
                 return HttpNotFound();
@@ -137,26 +138,26 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            contact contact = db.contacts.Find(id);
+            contacts contact = db.contacts.Find(id);
             db.contacts.Remove(contact);
 
-            IEnumerable<project> projects1 = db.projects.Where(p => p.executorID == id);
-            foreach (project p in projects1)
+            IEnumerable<projects> projects1 = db.projects.Where(p => p.executorID == id);
+            foreach (projects p in projects1)
             {
                 p.executorID = null;
             }
-            IEnumerable<project> projects2 = db.projects.Where(p => p.clientID == id);
-            foreach (project p in projects2)
+            IEnumerable<projects> projects2 = db.projects.Where(p => p.clientID == id);
+            foreach (projects p in projects2)
             {
                 p.clientID = null;
             }
-            IEnumerable<project> projects3 = db.projects.Where(p => p.managerID == id);
-            foreach (project p in projects3)
+            IEnumerable<projects> projects3 = db.projects.Where(p => p.managerID == id);
+            foreach (projects p in projects3)
             {
                 p.managerID = null;
             }
-            IEnumerable<project> projects4 = db.projects.Where(p => p.showmanID == id);
-            foreach (project p in projects4)
+            IEnumerable<projects> projects4 = db.projects.Where(p => p.showmanID == id);
+            foreach (projects p in projects4)
             {
                 p.showmanID = null;
             }

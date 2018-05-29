@@ -12,12 +12,12 @@ namespace WebApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class place
+    public partial class place_old
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public place()
+        public place_old()
         {
-            this.projects = new HashSet<project>();
+            this.projects = new HashSet<project_old>();
         }
     
         public int placeID { get; set; }
@@ -30,6 +30,6 @@ namespace WebApplication.Models
         public string note { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<project> projects { get; set; }
+        public virtual ICollection<project_old> projects { get; set; }
     }
 }

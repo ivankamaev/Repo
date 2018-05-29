@@ -12,12 +12,12 @@ namespace WebApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class organization
+    public partial class organization_old
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public organization()
+        public organization_old()
         {
-            this.contacts = new HashSet<contact>();
+            this.contacts = new HashSet<contact_old>();
         }
     
         public int organizationID { get; set; }
@@ -27,6 +27,6 @@ namespace WebApplication.Models
         public string note { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<contact> contacts { get; set; }
+        public virtual ICollection<contact_old> contacts { get; set; }
     }
 }

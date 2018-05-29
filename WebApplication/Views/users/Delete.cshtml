@@ -1,4 +1,4 @@
-﻿@model WebApplication.Models.user
+﻿@model WebApplication.Models.users
 
 @{
     ViewBag.Title = "Удаление";
@@ -12,17 +12,17 @@
     <dl class="dl-horizontal">
         <dt>Имя</dt>
         <dd>
-            @Html.DisplayFor(model => model.contact.name) @Html.DisplayFor(model => model.contact.lastname) 
+            @Html.DisplayFor(model => model.contacts.name) @Html.DisplayFor(model => model.contacts.lastname) 
         </dd>
 
         <dt>E-mail</dt>
         <dd>
-            @Html.DisplayFor(model => model.contact.email)
+            @Html.DisplayFor(model => model.contacts.email)
         </dd>
 
         <dt>Телефон</dt>
         <dd>
-            @Html.DisplayFor(model => model.contact.phone)
+            @Html.DisplayFor(model => model.contacts.phone)
         </dd>
 
         <dt>Статус</dt>

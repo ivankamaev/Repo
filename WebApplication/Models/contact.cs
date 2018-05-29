@@ -12,16 +12,16 @@ namespace WebApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class contact
+    public partial class contact_old
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public contact()
+        public contact_old()
         {
-            this.projects = new HashSet<project>();
-            this.projects1 = new HashSet<project>();
-            this.projects2 = new HashSet<project>();
-            this.projects3 = new HashSet<project>();
-            this.users = new HashSet<user>();
+            this.projects = new HashSet<project_old>();
+            this.projects1 = new HashSet<project_old>();
+            this.projects2 = new HashSet<project_old>();
+            this.projects3 = new HashSet<project_old>();
+            this.users = new HashSet<user_old>();
         }
     
         public int contactID { get; set; }
@@ -33,16 +33,16 @@ namespace WebApplication.Models
         public string email { get; set; }
         public string note { get; set; }
     
-        public virtual organization organization { get; set; }
+        public virtual organization_old organization { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<project> projects { get; set; }
+        public virtual ICollection<project_old> projects { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<project> projects1 { get; set; }
+        public virtual ICollection<project_old> projects1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<project> projects2 { get; set; }
+        public virtual ICollection<project_old> projects2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<project> projects3 { get; set; }
+        public virtual ICollection<project_old> projects3 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user> users { get; set; }
+        public virtual ICollection<user_old> users { get; set; }
     }
 }

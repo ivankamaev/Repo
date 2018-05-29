@@ -20,7 +20,8 @@ namespace WebApplication.Controllers
     [UserAuthorize]
     public class reportsController : Controller
     {
-        private u0416457_systemEntities db = new u0416457_systemEntities();
+        //private u0416457_systemEntities db = new u0416457_systemEntities();
+        private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index()
         {
@@ -154,7 +155,7 @@ namespace WebApplication.Controllers
             List<string> els = new List<string>();
             foreach (var p in projects)
             {
-                els.Add(p.contact1.lastname + " " + p.contact1.name);
+                els.Add(p.contacts1.lastname + " " + p.contacts1.name);
             }
             els = els.Distinct().ToList();
             List<SelectListItem> exlist = new List<SelectListItem>();
@@ -237,9 +238,9 @@ namespace WebApplication.Controllers
                 {
                     case "city":
                         ViewBag.Category = "Города";
-                        if (pr.place.city != null)
+                        if (pr.places.city != null)
                         {
-                            ls.Add(pr.place.city);
+                            ls.Add(pr.places.city);
                         }
                         break;
                     case "type":
@@ -270,23 +271,23 @@ namespace WebApplication.Controllers
                         break;
                     case "client":
                         ViewBag.Category = "Клиенты";
-                        if (pr.contact != null || pr.contact != null)
+                        if (pr.contacts != null || pr.contacts != null)
                         {
-                            ls.Add(pr.contact.lastname + " " + pr.contact.name);
+                            ls.Add(pr.contacts.lastname + " " + pr.contacts.name);
                         }
                         break;
                     case "manager":
                         ViewBag.Category = "Организаторы";
-                        if (pr.contact2 != null || pr.contact2 != null)
+                        if (pr.contacts2 != null || pr.contacts2 != null)
                         {
-                            ls.Add(pr.contact2.lastname + " " + pr.contact2.name);
+                            ls.Add(pr.contacts2.lastname + " " + pr.contacts2.name);
                         }
                         break;
                     case "showman":
                         ViewBag.Category = "Ведущие";
-                        if (pr.contact3 != null || pr.contact3 != null)
+                        if (pr.contacts3 != null || pr.contacts3 != null)
                         {
-                            ls.Add(pr.contact3.lastname + " " + pr.contact3.name);
+                            ls.Add(pr.contacts3.lastname + " " + pr.contacts3.name);
                         }
                         break;
                 }
@@ -410,7 +411,7 @@ namespace WebApplication.Controllers
                     string ln = e.Substring(0, e.IndexOf(" "));
                     string n = e.Substring(e.IndexOf(" ") + 1, e.Length - e.IndexOf(" ") - 1);
                     dtend = dttemp.AddMonths(1).AddDays(-1);
-                    p.Y = db.projects.Where(pr => pr.contact1.lastname == ln).Where(pr => pr.contact1.name == n).Where(pr => pr.start >= dttemp).Where(pr => pr.start <= dtend).Count();
+                    p.Y = db.projects.Where(pr => pr.contacts1.lastname == ln).Where(pr => pr.contacts1.name == n).Where(pr => pr.start >= dttemp).Where(pr => pr.start <= dtend).Count();
                     dttemp = dttemp.AddMonths(1);
                     pp.Add(p);
                 }

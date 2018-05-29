@@ -7,13 +7,13 @@
       <Diagram DiagramId="e7e0e293d5a74caaaf40a0249d14cd75" Name="Diagram1" ZoomLevel="90">
         <EntityTypeShape EntityType="u0416457_systemModel.contact" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="u0416457_systemModel.equipment" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="u0416457_systemModel.organization" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="u0416457_systemModel.organization" Width="1.5" PointX="3" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="u0416457_systemModel.place" Width="1.5" PointX="8.25" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="u0416457_systemModel.project_equipment" Width="1.75" PointX="8.125" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="u0416457_systemModel.project" Width="1.75" PointX="5.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="u0416457_systemModel.tech_brands" Width="1.5" PointX="12.625" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="u0416457_systemModel.tech_models" Width="1.5" PointX="12.625" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="u0416457_systemModel.user" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="u0416457_systemModel.user" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="u0416457_systemModel.FK_Contacts_Organizations" ManuallyRouted="false" />
         <AssociationConnector Association="u0416457_systemModel.FK_Project_Client" ManuallyRouted="false" />
         <AssociationConnector Association="u0416457_systemModel.FK_Project_Executor" ManuallyRouted="false" />

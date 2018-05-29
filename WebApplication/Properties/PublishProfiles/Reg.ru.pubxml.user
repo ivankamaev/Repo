@@ -11,7 +11,7 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DotNet.Highcharts.dll">
-      <publishTime>01/08/2018 17:44:36</publishTime>
+      <publishTime>08/01/2018 17:44:36</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>12/12/2017 13:32:41</publishTime>
@@ -20,10 +20,10 @@
       <publishTime>12/12/2017 13:32:41</publishTime>
     </File>
     <File Include="bin/NLog.config">
-      <publishTime>02/01/2018 17:13:14</publishTime>
+      <publishTime>01/02/2018 17:13:14</publishTime>
     </File>
     <File Include="bin/NLog.dll">
-      <publishTime>01/24/2018 22:16:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/ru/EntityFramework.resources.dll">
       <publishTime>12/12/2017 13:32:44</publishTime>
@@ -65,10 +65,10 @@
       <publishTime>12/12/2017 13:30:58</publishTime>
     </File>
     <File Include="bin/WebApplication.dll">
-      <publishTime>02/01/2018 19:07:05</publishTime>
+      <publishTime>01/02/2018 19:07:05</publishTime>
     </File>
     <File Include="Content/bar.jpg">
-      <publishTime>01/10/2018 15:54:52</publishTime>
+      <publishTime>10/01/2018 15:54:52</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>12/12/2017 13:39:39</publishTime>
@@ -77,10 +77,10 @@
       <publishTime>12/12/2017 13:39:39</publishTime>
     </File>
     <File Include="Content/line.jpg">
-      <publishTime>01/10/2018 15:54:49</publishTime>
+      <publishTime>10/01/2018 15:54:49</publishTime>
     </File>
     <File Include="Content/pie.jpg">
-      <publishTime>01/10/2018 15:54:51</publishTime>
+      <publishTime>10/01/2018 15:54:51</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>12/12/2017 13:39:37</publishTime>
@@ -101,13 +101,13 @@
       <publishTime>12/12/2017 13:30:58</publishTime>
     </File>
     <File Include="Models/Model.edmx.diagram">
-      <publishTime>01/17/2018 06:37:03</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="NLog.config">
-      <publishTime>02/01/2018 17:13:14</publishTime>
+      <publishTime>01/02/2018 17:13:14</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>01/24/2018 22:16:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>12/12/2017 13:39:39</publishTime>
@@ -116,103 +116,103 @@
       <publishTime>12/12/2017 13:39:39</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/adapters/standalone-framework.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/adapters/standalone-framework.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/highcharts-3d.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/highcharts-3d.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/highcharts-all.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/highcharts-more.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/highcharts-more.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/highcharts.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/highcharts.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/canvas-tools.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/canvas-tools.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/data.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/data.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/drilldown.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/drilldown.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/exporting.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/exporting.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/funnel.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/funnel.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/heatmap.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/heatmap.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/no-data-to-display.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/no-data-to-display.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/solid-gauge.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/modules/solid-gauge.src.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/themes/dark-blue.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/themes/dark-green.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/themes/dark-unica.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/themes/gray.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/themes/grid-light.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/themes/grid.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/themes/sand-signika.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/Highcharts-4.0.1/js/themes/skies.js">
-      <publishTime>01/08/2018 17:44:37</publishTime>
+      <publishTime>08/01/2018 17:44:37</publishTime>
     </File>
     <File Include="Scripts/jquery-1.10.2.js">
       <publishTime>12/12/2017 13:39:40</publishTime>
@@ -233,7 +233,7 @@
       <publishTime>12/12/2017 13:47:57</publishTime>
     </File>
     <File Include="Views/contacts/Details.cshtml">
-      <publishTime>01/05/2018 19:52:50</publishTime>
+      <publishTime>05/01/2018 19:52:50</publishTime>
     </File>
     <File Include="Views/contacts/Edit.cshtml">
       <publishTime>12/12/2017 13:47:39</publishTime>
@@ -248,16 +248,16 @@
       <publishTime>12/12/2017 21:22:13</publishTime>
     </File>
     <File Include="Views/equipment/Details.cshtml">
-      <publishTime>01/05/2018 19:53:30</publishTime>
+      <publishTime>05/01/2018 19:53:30</publishTime>
     </File>
     <File Include="Views/equipment/Edit.cshtml">
       <publishTime>12/12/2017 20:57:28</publishTime>
     </File>
     <File Include="Views/equipment/Index.cshtml">
-      <publishTime>01/24/2018 15:56:32</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/login/Index.cshtml">
-      <publishTime>01/05/2018 03:59:54</publishTime>
+      <publishTime>05/01/2018 03:59:54</publishTime>
     </File>
     <File Include="Views/organizations/Create.cshtml">
       <publishTime>12/12/2017 13:43:55</publishTime>
@@ -266,7 +266,7 @@
       <publishTime>12/12/2017 13:44:28</publishTime>
     </File>
     <File Include="Views/organizations/Details.cshtml">
-      <publishTime>01/05/2018 19:54:00</publishTime>
+      <publishTime>05/01/2018 19:54:00</publishTime>
     </File>
     <File Include="Views/organizations/Edit.cshtml">
       <publishTime>12/12/2017 13:44:11</publishTime>
@@ -281,7 +281,7 @@
       <publishTime>12/12/2017 13:41:03</publishTime>
     </File>
     <File Include="Views/places/Details.cshtml">
-      <publishTime>01/05/2018 19:54:31</publishTime>
+      <publishTime>05/01/2018 19:54:31</publishTime>
     </File>
     <File Include="Views/places/Edit.cshtml">
       <publishTime>12/12/2017 13:40:46</publishTime>
@@ -290,19 +290,19 @@
       <publishTime>12/12/2017 13:39:54</publishTime>
     </File>
     <File Include="Views/projects/Create.cshtml">
-      <publishTime>01/06/2018 22:19:44</publishTime>
+      <publishTime>06/01/2018 22:19:44</publishTime>
     </File>
     <File Include="Views/projects/Delete.cshtml">
       <publishTime>12/12/2017 22:08:36</publishTime>
     </File>
     <File Include="Views/projects/Details.cshtml">
-      <publishTime>01/08/2018 16:10:59</publishTime>
+      <publishTime>08/01/2018 16:10:59</publishTime>
     </File>
     <File Include="Views/projects/Edit.cshtml">
-      <publishTime>01/06/2018 22:26:23</publishTime>
+      <publishTime>06/01/2018 22:26:23</publishTime>
     </File>
     <File Include="Views/projects/Index.cshtml">
-      <publishTime>01/05/2018 19:49:05</publishTime>
+      <publishTime>05/01/2018 19:49:05</publishTime>
     </File>
     <File Include="Views/project_equipment/Create.cshtml">
       <publishTime>12/12/2017 22:52:25</publishTime>
@@ -314,31 +314,31 @@
       <publishTime>12/12/2017 22:51:30</publishTime>
     </File>
     <File Include="Views/project_equipment/Index.cshtml">
-      <publishTime>01/05/2018 20:44:51</publishTime>
+      <publishTime>05/01/2018 20:44:51</publishTime>
     </File>
     <File Include="Views/reports/ColumnChart.cshtml">
-      <publishTime>01/18/2018 16:52:27</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/reports/ColumnOptions.cshtml">
-      <publishTime>01/18/2018 16:52:27</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/reports/Index.cshtml">
-      <publishTime>01/18/2018 16:52:27</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/reports/LineChart.cshtml">
-      <publishTime>01/18/2018 16:52:27</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/reports/LineOptions.cshtml">
-      <publishTime>01/18/2018 16:52:27</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/reports/PieChart.cshtml">
-      <publishTime>01/18/2018 16:52:27</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/reports/PieOptions.cshtml">
-      <publishTime>01/18/2018 16:52:27</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/18/2018 17:13:17</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/tech_brands/Create.cshtml">
       <publishTime>12/12/2017 15:06:46</publishTime>
@@ -347,7 +347,7 @@
       <publishTime>12/12/2017 15:08:42</publishTime>
     </File>
     <File Include="Views/tech_brands/Details.cshtml">
-      <publishTime>01/05/2018 19:55:05</publishTime>
+      <publishTime>05/01/2018 19:55:05</publishTime>
     </File>
     <File Include="Views/tech_brands/Edit.cshtml">
       <publishTime>12/12/2017 15:07:47</publishTime>
@@ -362,7 +362,7 @@
       <publishTime>12/12/2017 16:33:22</publishTime>
     </File>
     <File Include="Views/tech_models/Details.cshtml">
-      <publishTime>01/05/2018 19:55:28</publishTime>
+      <publishTime>05/01/2018 19:55:28</publishTime>
     </File>
     <File Include="Views/tech_models/Edit.cshtml">
       <publishTime>12/12/2017 16:31:14</publishTime>
@@ -371,16 +371,16 @@
       <publishTime>12/12/2017 23:02:52</publishTime>
     </File>
     <File Include="Views/users/Create.cshtml">
-      <publishTime>01/05/2018 04:04:43</publishTime>
+      <publishTime>05/01/2018 04:04:43</publishTime>
     </File>
     <File Include="Views/users/Delete.cshtml">
-      <publishTime>12/14/2017 12:52:48</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Views/users/Edit.cshtml">
-      <publishTime>01/04/2018 16:39:56</publishTime>
+      <publishTime>04/01/2018 16:39:56</publishTime>
     </File>
     <File Include="Views/users/Index.cshtml">
-      <publishTime>01/04/2018 16:58:58</publishTime>
+      <publishTime>04/01/2018 16:58:58</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>12/12/2017 13:30:58</publishTime>
@@ -389,7 +389,7 @@
       <publishTime>12/12/2017 13:39:36</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/01/2018 19:07:06</publishTime>
+      <publishTime>01/02/2018 19:07:06</publishTime>
     </File>
   </ItemGroup>
 </Project>

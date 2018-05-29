@@ -21,6 +21,6 @@ namespace WebApplication.Models
         public string note { get; set; }
     
         public virtual equipment equipment { get; set; }
-        public virtual project project { get; set; }
+        public virtual projects projects { get; set; }
     }
 }

@@ -11,7 +11,8 @@ namespace WebApplication.Controllers
 {
     public class loginController : Controller
     {
-        private u0416457_systemEntities db = new u0416457_systemEntities();
+        //private u0416457_systemEntities db = new u0416457_systemEntities();
+        private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index(string logout)
         {
@@ -38,7 +39,7 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult Index(string email,string password)
         {
-            var users = db.users.Where(u => u.contact.email == email);
+            var users = db.users.Where(u => u.contacts.email == email);
             if (users.Count() == 1)
             {
                 int time = 30;

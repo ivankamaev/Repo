@@ -12,12 +12,12 @@ namespace WebApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class user
+    public partial class user_old
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public user()
+        public user_old()
         {
-            this.projects = new HashSet<project>();
+            this.projects = new HashSet<project_old>();
         }
     
         public int userID { get; set; }
@@ -25,8 +25,8 @@ namespace WebApplication.Models
         public string passwordhash { get; set; }
         public string status { get; set; }
     
-        public virtual contact contact { get; set; }
+        public virtual contact_old contact { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<project> projects { get; set; }
+        public virtual ICollection<project_old> projects { get; set; }
     }
 }

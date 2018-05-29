@@ -15,7 +15,8 @@ namespace WebApplication1.Controllers
     [UserAuthorize]
     public class project_equipmentController : Controller
     {
-        private u0416457_systemEntities db = new u0416457_systemEntities();
+        //private u0416457_systemEntities db = new u0416457_systemEntities();
+        private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index(int? id)
         {
@@ -23,21 +24,21 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var project_equipment = db.project_equipment.Include(pe => pe.project).Include(pe => pe.equipment).Where(pe => pe.projectID == id).ToList();
+            var project_equipment = db.project_equipment.Include(pe => pe.projects).Include(pe => pe.equipment).Where(pe => pe.projectID == id).ToList();
             if (project_equipment == null)
             {
                 return HttpNotFound();
             }
             ViewBag.ID = id;
-            project pr = db.projects.Find(id);
+            projects pr = db.projects.Find(id);
             if (pr.executorID != null)
             {
-                ViewBag.ExecutorName = pr.contact1.name;
-                ViewBag.ExecutorLastname = pr.contact1.lastname;
+                ViewBag.ExecutorName = pr.contacts1.name;
+                ViewBag.ExecutorLastname = pr.contacts1.lastname;
             }
             if (pr.placeID != null)
             {
-                ViewBag.Place = pr.place.name;
+                ViewBag.Place = pr.places.name;
             }
             if (pr.start != null)
             {
@@ -95,17 +96,17 @@ namespace WebApplication1.Controllers
             ViewBag.peID = i;
             ViewBag.ID = id;
             ViewBag.createrID = 1;
-            project pr = db.projects.Find(id);
+            projects pr = db.projects.Find(id);
             if (pr.executorID != null)
             {
-                ViewBag.ExecutorName = pr.contact1.name;
-                ViewBag.ExecutorLastname = pr.contact1.lastname;
+                ViewBag.ExecutorName = pr.contacts1.name;
+                ViewBag.ExecutorLastname = pr.contacts1.lastname;
             }
             if (pr.placeID != null)
             {
-                ViewBag.Place = pr.place.name;
+                ViewBag.Place = pr.places.name;
             }
-            var equipment = db.equipments.Where(e => e.equipmentID != null).ToList();
+            var equipment = db.equipment.Where(e => e.equipmentID != null).ToList();
             IEnumerable<SelectListItem> selectList1 = from e in equipment
                                                      where e.tech_models.tech_brands != null && e.tech_models != null
                                                      orderby e.tech_models.tech_brands.name, e.tech_models.name 
@@ -162,7 +163,7 @@ namespace WebApplication1.Controllers
             {
                 return HttpNotFound();
             }
-            project pr = db.projects.Find(project_equipment.projectID);
+            projects pr = db.projects.Find(project_equipment.projectID);
             ViewBag.ID = pr.projectID;
             if (Request.Cookies.Get("id") != null)
             {
@@ -180,12 +181,12 @@ namespace WebApplication1.Controllers
             }
             if (pr.executorID != null)
             {
-                ViewBag.ExecutorName = pr.contact.name;
-                ViewBag.ExecutorLastname = pr.contact.lastname;
+                ViewBag.ExecutorName = pr.contacts.name;
+                ViewBag.ExecutorLastname = pr.contacts.lastname;
             }
             if (pr.placeID != null)
             {
-                ViewBag.Place = pr.place.name;
+                ViewBag.Place = pr.places.name;
             }
             return View(project_equipment);
         }
@@ -215,7 +216,7 @@ namespace WebApplication1.Controllers
             {
                 return HttpNotFound();
             }
-            project pr = db.projects.Find(project_equipment.projectID);
+            projects pr = db.projects.Find(project_equipment.projectID);
             ViewBag.ID = pr.projectID;
             if (Request.Cookies.Get("id") != null)
             {
@@ -233,12 +234,12 @@ namespace WebApplication1.Controllers
             }
             if (pr.executorID != null)
             {
-                ViewBag.ExecutorName = pr.contact.name;
-                ViewBag.ExecutorLastname = pr.contact.lastname;
+                ViewBag.ExecutorName = pr.contacts.name;
+                ViewBag.ExecutorLastname = pr.contacts.lastname;
             }
             if (pr.placeID != null)
             {
-                ViewBag.Place = pr.place.name;
+                ViewBag.Place = pr.places.name;
             }
             return View(project_equipment);
         }

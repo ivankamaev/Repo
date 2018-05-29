@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication.Models.user>
+﻿@model IEnumerable<WebApplication.Models.users>
 
 @{
     ViewBag.Title = "Пользователи";
@@ -26,13 +26,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.contact.lastname) @Html.DisplayFor(modelItem => item.contact.name)
+                @Html.DisplayFor(modelItem => item.contacts.lastname) @Html.DisplayFor(modelItem => item.contacts.name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.contact.email)
+                @Html.DisplayFor(modelItem => item.contacts.email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.contact.phone)
+                @Html.DisplayFor(modelItem => item.contacts.phone)
             </td>
             <td>
                 @{

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication.Models.project>
+﻿@model IEnumerable<WebApplication.Models.projects>
 
 @{
     ViewBag.Title = "Проекты";
@@ -38,7 +38,7 @@
                 }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.place.name)
+                @Html.DisplayFor(modelItem => item.places.name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.type)
@@ -47,16 +47,16 @@
                 @Html.DisplayFor(modelItem => item.worktype)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.contact1.name) @Html.DisplayFor(modelItem => item.contact1.lastname)
+                @Html.DisplayFor(modelItem => item.contacts1.name) @Html.DisplayFor(modelItem => item.contacts1.lastname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.contact.name) @Html.DisplayFor(modelItem => item.contact.lastname)
+                @Html.DisplayFor(modelItem => item.contacts.name) @Html.DisplayFor(modelItem => item.contacts.lastname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.contact2.name) @Html.DisplayFor(modelItem => item.contact2.lastname)
+                @Html.DisplayFor(modelItem => item.contacts2.name) @Html.DisplayFor(modelItem => item.contacts2.lastname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.contact3.name) @Html.DisplayFor(modelItem => item.contact3.lastname)
+                @Html.DisplayFor(modelItem => item.contacts3.name) @Html.DisplayFor(modelItem => item.contacts3.lastname)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.profit_total)

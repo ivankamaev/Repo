@@ -15,19 +15,20 @@ namespace WebApplication.Controllers
     [AdminAuthorize]
     public class usersController : Controller
     {
-        private u0416457_systemEntities db = new u0416457_systemEntities();
+        //private u0416457_systemEntities db = new u0416457_systemEntities();
+        private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index(string sortOrder)
         {
-            var users = db.users.Include(u => u.contact);
+            var users = db.users.Include(u => u.contacts);
             ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
             switch (sortOrder)
             {
                 case "Name desc":
-                    users = users.OrderByDescending(u => u.contact.lastname);
+                    users = users.OrderByDescending(u => u.contacts.lastname);
                     break;
                 default:
-                    users = users.OrderBy(u => u.contact.lastname);
+                    users = users.OrderBy(u => u.contacts.lastname);
                     break;
             }
             return View(users.ToList());
@@ -37,10 +38,10 @@ namespace WebApplication.Controllers
         {
             var existusers = db.users.Where(u => u.userID != null).ToList();
             var contacts = db.contacts.Where(c => c.contactID != null).ToList();
-            var cont = new List<contact>();
-            foreach (contact c in contacts)
+            var cont = new List<contacts>();
+            foreach (contacts c in contacts)
             {
-                foreach (user u in existusers)
+                foreach (users u in existusers)
                 {
                     if (c.contactID == u.contactID)
                     {
@@ -71,7 +72,7 @@ namespace WebApplication.Controllers
 
             var users = db.users.OrderBy(u => u.userID);
             int i = 1;
-            foreach (user u in users)
+            foreach (users u in users)
             {
                 if (i != u.userID)
                 {
@@ -88,7 +89,7 @@ namespace WebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userID,contactID,status")] user user, string passwordhash)
+        public ActionResult Create([Bind(Include = "userID,contactID,status")] users user, string passwordhash)
         {
             if (ModelState.IsValid)
             {
@@ -109,18 +110,18 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            user user = db.users.Find(id);
+            users user = db.users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
             var existusers = db.users.Where(u => u.userID != null).ToList();
             var contacts = db.contacts.Where(c => c.contactID != null).ToList();
-            var cont = new List<contact>();
-            cont.Add(user.contact);
-            foreach (contact c in contacts)
+            var cont = new List<contacts>();
+            cont.Add(user.contacts);
+            foreach (contacts c in contacts)
             {
-                foreach (user u in existusers)
+                foreach (users u in existusers)
                 {
                     if (c.contactID == u.contactID)
                     {
@@ -154,7 +155,7 @@ namespace WebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userID,contactID,passwordhash,status")] user user)
+        public ActionResult Edit([Bind(Include = "userID,contactID,passwordhash,status")] users user)
         {
             if (ModelState.IsValid)
             {
@@ -171,7 +172,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            user user = db.users.Find(id);
+            users user = db.users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -183,10 +184,10 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            user user = db.users.Find(id);
+            users user = db.users.Find(id);
             db.users.Remove(user);
-            IEnumerable<project> projects = db.projects.Where(p => p.createrID == id);
-            foreach (project p in projects)
+            IEnumerable<projects> projects = db.projects.Where(p => p.createrID == id);
+            foreach (projects p in projects)
             {
                 p.createrID = null;
             }

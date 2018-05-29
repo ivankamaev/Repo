@@ -14,7 +14,8 @@ namespace WebApplication1.Controllers
     [UserAuthorize]
     public class tech_modelsController : Controller
     {
-        private u0416457_systemEntities db = new u0416457_systemEntities();
+        //private u0416457_systemEntities db = new u0416457_systemEntities();
+        private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index(string sortOrder)
         {
@@ -160,7 +161,7 @@ namespace WebApplication1.Controllers
         {
             tech_models tech_model = db.tech_models.Find(id);
             db.tech_models.Remove(tech_model);
-            IEnumerable<equipment> equipment = db.equipments.Where(e => e.modelID == id);
+            IEnumerable<equipment> equipment = db.equipment.Where(e => e.modelID == id);
             foreach (equipment e in equipment)
             {
                 e.modelID = null;

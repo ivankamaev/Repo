@@ -14,11 +14,12 @@ namespace WebApplication1.Controllers
     [UserAuthorize]
     public class equipmentController : Controller
     {
-        private u0416457_systemEntities db = new u0416457_systemEntities();
+        //private u0416457_systemEntities db = new u0416457_systemEntities();
+        private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index(string sortOrder)
         {
-            var equipments = db.equipments.Include(e => e.tech_models);
+            var equipments = db.equipment.Include(e => e.tech_models);
             ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
             ViewBag.BrandSort = sortOrder == "Brand" ? "Brand desc" : "Brand";
             ViewBag.ModelSort = sortOrder == "Model" ? "Model desc" : "Model";
@@ -59,7 +60,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            equipment equipment = db.equipments.Find(id);
+            equipment equipment = db.equipment.Find(id);
             if (equipment == null)
             {
                 return HttpNotFound();
@@ -92,7 +93,7 @@ namespace WebApplication1.Controllers
             
             ViewBag.modelID = new SelectList(selectList, "Value", "Text");
 
-            var equipment = db.equipments.Include(e => e.tech_models).OrderBy(e => e.equipmentID);
+            var equipment = db.equipment.Include(e => e.tech_models).OrderBy(e => e.equipmentID);
             int i = 1;
             foreach (equipment e in equipment)
             {
@@ -116,7 +117,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.equipments.Add(equipment);
+                db.equipment.Add(equipment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -131,7 +132,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            equipment equipment = db.equipments.Find(id);
+            equipment equipment = db.equipment.Find(id);
             if (equipment == null)
             {
                 return HttpNotFound();
@@ -179,7 +180,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            equipment equipment = db.equipments.Find(id);
+            equipment equipment = db.equipment.Find(id);
             if (equipment == null)
             {
                 return HttpNotFound();
@@ -191,8 +192,8 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            equipment equipment = db.equipments.Find(id);
-            db.equipments.Remove(equipment);
+            equipment equipment = db.equipment.Find(id);
+            db.equipment.Remove(equipment);
             IEnumerable<project_equipment> project_equipment = db.project_equipment.Where(pe => pe.equipmentID == id);
             foreach (project_equipment pe in project_equipment)
             {

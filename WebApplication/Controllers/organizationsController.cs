@@ -14,11 +14,12 @@ namespace WebApplication.Controllers
     [UserAuthorize]
     public class organizationsController : Controller
     {
-        private u0416457_systemEntities db = new u0416457_systemEntities();
+        //private u0416457_systemEntities db = new u0416457_systemEntities();
+        private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index(string sortOrder)
         {
-            var organizations = (IQueryable<organization>)db.organizations;
+            var organizations = (IQueryable<organizations>)db.organizations;
             ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
             switch (sortOrder)
             {
@@ -38,7 +39,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            organization organization = db.organizations.Find(id);
+            organizations organization = db.organizations.Find(id);
             if (organization == null)
             {
                 return HttpNotFound();
@@ -50,7 +51,7 @@ namespace WebApplication.Controllers
         {
             var organizations = db.organizations.OrderBy(o => o.organizationID);
             int i = 1;
-            foreach (organization o in organizations)
+            foreach (organizations o in organizations)
             {
                 if (i != o.organizationID)
                 {
@@ -67,7 +68,7 @@ namespace WebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "organizationID,name,phone,email,note")] organization organization)
+        public ActionResult Create([Bind(Include = "organizationID,name,phone,email,note")] organizations organization)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +86,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            organization organization = db.organizations.Find(id);
+            organizations organization = db.organizations.Find(id);
             if (organization == null)
             {
                 return HttpNotFound();
@@ -95,7 +96,7 @@ namespace WebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "organizationID,name,phone,email,note")] organization organization)
+        public ActionResult Edit([Bind(Include = "organizationID,name,phone,email,note")] organizations organization)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +113,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            organization organization = db.organizations.Find(id);
+            organizations organization = db.organizations.Find(id);
             if (organization == null)
             {
                 return HttpNotFound();
@@ -124,10 +125,10 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            organization organization = db.organizations.Find(id);
+            organizations organization = db.organizations.Find(id);
             db.organizations.Remove(organization);
-            IEnumerable<contact> contacts = db.contacts.Where(c => c.organizationID == id);
-            foreach (contact p in contacts)
+            IEnumerable<contacts> contacts = db.contacts.Where(c => c.organizationID == id);
+            foreach (contacts p in contacts)
             {
                 p.organizationID = null;
             }

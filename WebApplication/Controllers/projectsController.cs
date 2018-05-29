@@ -17,11 +17,12 @@ namespace WebApplication1.Controllers
     [UserAuthorize]
     public class projectsController : Controller
     {
-        private u0416457_systemEntities db = new u0416457_systemEntities();
+        //private u0416457_systemEntities db = new u0416457_systemEntities();
+        private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index(string sortOrder)
         {
-            var projects = db.projects.Include(c => c.contact).Include(c => c.contact1).Include(c => c.contact2).Include(c => c.contact3).Include(p => p.place).Include(u => u.user);
+            var projects = db.projects.Include(c => c.contacts).Include(c => c.contacts1).Include(c => c.contacts2).Include(c => c.contacts3).Include(p => p.places).Include(u => u.users);
             ViewBag.DateSort = String.IsNullOrEmpty(sortOrder) ? "Date desc" : "";
             ViewBag.PlaceSort = sortOrder == "Place" ? "Place desc" : "Place";
             switch (sortOrder)
@@ -30,10 +31,10 @@ namespace WebApplication1.Controllers
                     projects = projects.OrderByDescending(p => p.start);
                     break;
                 case "Place":
-                    projects = projects.OrderBy(p => p.place.name);
+                    projects = projects.OrderBy(p => p.places.name);
                     break;
                 case "Place desc":
-                    projects = projects.OrderByDescending(p => p.place.name);
+                    projects = projects.OrderByDescending(p => p.places.name);
                     break;
                 default:
                     projects = projects.OrderBy(p => p.start);
@@ -60,12 +61,12 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            project project = db.projects.Find(id);
+            projects project = db.projects.Find(id);
             if (project == null)
             {
                 return HttpNotFound();
             }
-            var pels = db.project_equipment.Include(pe => pe.project).Include(pe => pe.equipment).Where(pe => pe.projectID == id).ToList();
+            var pels = db.project_equipment.Include(pe => pe.projects).Include(pe => pe.equipment).Where(pe => pe.projectID == id).ToList();
             List<string> name = new List<string>();
             List<string> brand = new List<string>();
             List<string> model = new List<string>();
@@ -144,9 +145,9 @@ namespace WebApplication1.Controllers
             ViewBag.showmanID = new SelectList(selectList, "Value", "Text");
             ViewBag.placeID = new SelectList(db.places, "placeID", "name");
 
-            var projects = db.projects.Include(c => c.contact).Include(c => c.contact1).Include(c => c.contact2).Include(c => c.contact3).Include(p => p.place).Include(u => u.user).OrderBy(p => p.projectID);
+            var projects = db.projects.Include(c => c.contacts).Include(c => c.contacts1).Include(c => c.contacts2).Include(c => c.contacts3).Include(p => p.places).Include(u => u.users).OrderBy(p => p.projectID);
             int i = 1;
-            foreach (project pr in projects)
+            foreach (projects pr in projects)
             {
                 if (i != pr.projectID)
                 {
@@ -172,7 +173,7 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "projectID,createrID,arrival,installation,rehearsal,start,finish,deinstallation,departure,placeID,worktype,executorID,type,showmanID,managerID,clientID,content,note,receipts_cash,receipts_noncash,expenditure_cash,expenditure_noncash,profit_cash,profit_noncash,profit_total")] project project)
+        public ActionResult Create([Bind(Include = "projectID,createrID,arrival,installation,rehearsal,start,finish,deinstallation,departure,placeID,worktype,executorID,type,showmanID,managerID,clientID,content,note,receipts_cash,receipts_noncash,expenditure_cash,expenditure_noncash,profit_cash,profit_noncash,profit_total")] projects project)
         {
             if (ModelState.IsValid)
             {
@@ -195,7 +196,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            project project = db.projects.Find(id);
+            projects project = db.projects.Find(id);
             if (project == null)
             {
                 return HttpNotFound();
@@ -268,7 +269,7 @@ namespace WebApplication1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "projectID,createrID,arrival,installation,rehearsal,start,finish,deinstallation,departure,placeID,worktype,executorID,type,showmanID,managerID,clientID,content,note,receipts_cash,receipts_noncash,expenditure_cash,expenditure_noncash,profit_cash,profit_noncash,profit_total")] project project)
+        public ActionResult Edit([Bind(Include = "projectID,createrID,arrival,installation,rehearsal,start,finish,deinstallation,departure,placeID,worktype,executorID,type,showmanID,managerID,clientID,content,note,receipts_cash,receipts_noncash,expenditure_cash,expenditure_noncash,profit_cash,profit_noncash,profit_total")] projects project)
         {
             if (ModelState.IsValid)
             {
@@ -290,7 +291,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            project project = db.projects.Find(id);
+            projects project = db.projects.Find(id);
             if (project == null)
             {
                 return HttpNotFound();
@@ -317,7 +318,7 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            project project = db.projects.Find(id);
+            projects project = db.projects.Find(id);
             db.projects.Remove(project);
             IEnumerable<project_equipment> project_equipment = db.project_equipment.Where(p => p.projectID == id);
             foreach (project_equipment pe in project_equipment)

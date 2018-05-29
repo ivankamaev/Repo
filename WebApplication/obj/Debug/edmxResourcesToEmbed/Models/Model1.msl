@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище u0516067_coopersystemModelContainer" CdmEntityContainer="u0516067_coopersystemEntities">
+    <EntitySetMapping Name="contacts">
+      <EntityTypeMapping TypeName="u0516067_coopersystemModel.contacts">
+        <MappingFragment StoreEntitySet="contacts">
+          <ScalarProperty Name="contactID" ColumnName="contactID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="organizationID" ColumnName="organizationID" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="equipment">
+      <EntityTypeMapping TypeName="u0516067_coopersystemModel.equipment">
+        <MappingFragment StoreEntitySet="equipment">
+          <ScalarProperty Name="equipmentID" ColumnName="equipmentID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="modelID" ColumnName="modelID" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="organizations">
+      <EntityTypeMapping TypeName="u0516067_coopersystemModel.organizations">
+        <MappingFragment StoreEntitySet="organizations">
+          <ScalarProperty Name="organizationID" ColumnName="organizationID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="places">
+      <EntityTypeMapping TypeName="u0516067_coopersystemModel.places">
+        <MappingFragment StoreEntitySet="places">
+          <ScalarProperty Name="placeID" ColumnName="placeID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="project_equipment">
+      <EntityTypeMapping TypeName="u0516067_coopersystemModel.project_equipment">
+        <MappingFragment StoreEntitySet="project_equipment">
+          <ScalarProperty Name="project_equipmentID" ColumnName="project_equipmentID" />
+          <ScalarProperty Name="projectID" ColumnName="projectID" />
+          <ScalarProperty Name="equipmentID" ColumnName="equipmentID" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projects">
+      <EntityTypeMapping TypeName="u0516067_coopersystemModel.projects">
+        <MappingFragment StoreEntitySet="projects">
+          <ScalarProperty Name="projectID" ColumnName="projectID" />
+          <ScalarProperty Name="createrID" ColumnName="createrID" />
+          <ScalarProperty Name="arrival" ColumnName="arrival" />
+          <ScalarProperty Name="installation" ColumnName="installation" />
+          <ScalarProperty Name="rehearsal" ColumnName="rehearsal" />
+          <ScalarProperty Name="start" ColumnName="start" />
+          <ScalarProperty Name="finish" ColumnName="finish" />
+          <ScalarProperty Name="deinstallation" ColumnName="deinstallation" />
+          <ScalarProperty Name="departure" ColumnName="departure" />
+          <ScalarProperty Name="placeID" ColumnName="placeID" />
+          <ScalarProperty Name="worktype" ColumnName="worktype" />
+          <ScalarProperty Name="executorID" ColumnName="executorID" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="showmanID" ColumnName="showmanID" />
+          <ScalarProperty Name="managerID" ColumnName="managerID" />
+          <ScalarProperty Name="clientID" ColumnName="clientID" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="receipts_cash" ColumnName="receipts_cash" />
+          <ScalarProperty Name="receipts_noncash" ColumnName="receipts_noncash" />
+          <ScalarProperty Name="expenditure_cash" ColumnName="expenditure_cash" />
+          <ScalarProperty Name="expenditure_noncash" ColumnName="expenditure_noncash" />
+          <ScalarProperty Name="profit_cash" ColumnName="profit_cash" />
+          <ScalarProperty Name="profit_noncash" ColumnName="profit_noncash" />
+          <ScalarProperty Name="profit_total" ColumnName="profit_total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tech_brands">
+      <EntityTypeMapping TypeName="u0516067_coopersystemModel.tech_brands">
+        <MappingFragment StoreEntitySet="tech_brands">
+          <ScalarProperty Name="brandID" ColumnName="brandID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tech_models">
+      <EntityTypeMapping TypeName="u0516067_coopersystemModel.tech_models">
+        <MappingFragment StoreEntitySet="tech_models">
+          <ScalarProperty Name="modelID" ColumnName="modelID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="brandID" ColumnName="brandID" />
+          <ScalarProperty Name="characteristics" ColumnName="characteristics" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="u0516067_coopersystemModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="contactID" ColumnName="contactID" />
+          <ScalarProperty Name="passwordhash" ColumnName="passwordhash" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

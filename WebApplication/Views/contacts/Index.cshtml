@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication.Models.contact>
+﻿@model IEnumerable<WebApplication.Models.contacts>
 
 @{
     ViewBag.Title = "Контакты";
@@ -29,7 +29,7 @@
                 @Html.DisplayFor(modelItem => item.lastname) @Html.DisplayFor(modelItem => item.name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.organization.name)
+                @Html.DisplayFor(modelItem => item.organizations.name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.phone)

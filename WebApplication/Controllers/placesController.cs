@@ -14,11 +14,12 @@ namespace WebApplication.Controllers
     [UserAuthorize]
     public class placesController : Controller
     {
-        private u0416457_systemEntities db = new u0416457_systemEntities();
+        //private u0416457_systemEntities db = new u0416457_systemEntities();
+        private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index(string sortOrder)
         {
-            var places = (IQueryable<place>)db.places;
+            var places = (IQueryable<places>)db.places;
             ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "Name desc" : "";
             ViewBag.TypeSort = sortOrder == "Type" ? "Type desc" : "Type";
             ViewBag.CitySort = sortOrder == "City" ? "City desc" : "City";
@@ -52,7 +53,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            place place = db.places.Find(id);
+            places place = db.places.Find(id);
             if (place == null)
             {
                 return HttpNotFound();
@@ -64,7 +65,7 @@ namespace WebApplication.Controllers
         {
             var places = db.places.OrderBy(p => p.placeID);
             int i = 1;
-            foreach (place p in places)
+            foreach (places p in places)
             {
                 if (i != p.placeID)
                 {
@@ -81,7 +82,7 @@ namespace WebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "placeID,name,type,address,city,note,phone,email")] place place)
+        public ActionResult Create([Bind(Include = "placeID,name,type,address,city,note,phone,email")] places place)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +100,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            place place = db.places.Find(id);
+            places place = db.places.Find(id);
             if (place == null)
             {
                 return HttpNotFound();
@@ -109,7 +110,7 @@ namespace WebApplication.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "placeID,name,type,address,city,note,phone,email")] place place)
+        public ActionResult Edit([Bind(Include = "placeID,name,type,address,city,note,phone,email")] places place)
         {
             if (ModelState.IsValid)
             {
@@ -126,7 +127,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            place place = db.places.Find(id);
+            places place = db.places.Find(id);
             if (place == null)
             {
                 return HttpNotFound();
@@ -138,10 +139,10 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            place place = db.places.Find(id);
+            places place = db.places.Find(id);
             db.places.Remove(place);
-            IEnumerable<project> projects = db.projects.Where(p => p.placeID == id);
-            foreach (project p in projects)
+            IEnumerable<projects> projects = db.projects.Where(p => p.placeID == id);
+            foreach (projects p in projects)
             {
                 p.placeID = null;
             }

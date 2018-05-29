@@ -1,4 +1,4 @@
-﻿@model WebApplication.Models.project
+﻿@model WebApplication.Models.projects
 
 @{
     ViewBag.Title = "Удаление";
@@ -47,7 +47,7 @@
 
         <dt>Место</dt>
         <dd>
-            @Html.DisplayFor(model => model.place.name)
+            @Html.DisplayFor(model => model.places.name)
         </dd>
 
         <dt>Тип проекта</dt>
@@ -62,22 +62,22 @@
 
         <dt>Исполнитель</dt>
         <dd>
-            @Html.DisplayFor(model => model.contact.name) @Html.DisplayFor(model => model.contact.lastname)
+            @Html.DisplayFor(model => model.contacts.name) @Html.DisplayFor(model => model.contacts.lastname)
         </dd>
 
         <dt>Клиент</dt>
         <dd>
-            @Html.DisplayFor(model => model.contact1.name) @Html.DisplayFor(model => model.contact1.lastname)
+            @Html.DisplayFor(model => model.contacts1.name) @Html.DisplayFor(model => model.contacts1.lastname)
         </dd>
 
         <dt>Организатор</dt>
         <dd>
-            @Html.DisplayFor(model => model.contact2.name) @Html.DisplayFor(model => model.contact2.lastname)
+            @Html.DisplayFor(model => model.contacts2.name) @Html.DisplayFor(model => model.contacts2.lastname)
         </dd>
 
         <dt>Ведущий</dt>
         <dd>
-            @Html.DisplayFor(model => model.contact3.name) @Html.DisplayFor(model => model.contact3.lastname)
+            @Html.DisplayFor(model => model.contacts3.name) @Html.DisplayFor(model => model.contacts3.lastname)
         </dd>
 
         <dt>Контент</dt>

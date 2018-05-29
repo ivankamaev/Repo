@@ -17,7 +17,7 @@ namespace WebApplication.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tech_models()
         {
-            this.equipments = new HashSet<equipment>();
+            this.equipment = new HashSet<equipment>();
         }
     
         public int modelID { get; set; }
@@ -28,7 +28,7 @@ namespace WebApplication.Models
         public string type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<equipment> equipments { get; set; }
+        public virtual ICollection<equipment> equipment { get; set; }
         public virtual tech_brands tech_brands { get; set; }
     }
 }

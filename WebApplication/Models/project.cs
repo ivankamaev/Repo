@@ -12,10 +12,10 @@ namespace WebApplication.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class project
+    public partial class project_old
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public project()
+        public project_old()
         {
             this.project_equipment = new HashSet<project_equipment>();
         }
@@ -46,13 +46,13 @@ namespace WebApplication.Models
         public Nullable<double> profit_noncash { get; set; }
         public Nullable<double> profit_total { get; set; }
     
-        public virtual contact contact { get; set; }
-        public virtual contact contact1 { get; set; }
-        public virtual contact contact2 { get; set; }
-        public virtual contact contact3 { get; set; }
-        public virtual place place { get; set; }
+        public virtual contact_old contact { get; set; }
+        public virtual contact_old contact1 { get; set; }
+        public virtual contact_old contact2 { get; set; }
+        public virtual contact_old contact3 { get; set; }
+        public virtual place_old place { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<project_equipment> project_equipment { get; set; }
-        public virtual user user { get; set; }
+        public virtual user_old user { get; set; }
     }
 }
