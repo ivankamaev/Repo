@@ -9,13 +9,13 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication.Models;
 using WebApplication.Attributes;
+using System.Net.Mail;
 
 namespace WebApplication.Controllers
 {
     [AdminAuthorize]
     public class usersController : Controller
     {
-        //private u0416457_systemEntities db = new u0416457_systemEntities();
         private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index(string sortOrder)
@@ -97,6 +97,22 @@ namespace WebApplication.Controllers
                 user.passwordhash = hash;
                 db.users.Add(user);
                 db.SaveChanges();
+                if (user.contactID != null && db.contacts.Find(user.contactID).email != null)
+                {
+                    String toEmail = db.contacts.Find(user.contactID).email;
+                    SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                    client.Credentials = new NetworkCredential("ivankamaev94@gmail.com", "231564897Qwerty");
+                    client.EnableSsl = true;
+
+                    MailMessage mess = new MailMessage();
+                    mess.From = new MailAddress("ivankamaev94@gmail.com");
+                    mess.To.Add(new MailAddress(toEmail));
+                    mess.Subject = "Аккаунт в системе";
+                    String body = "Для вас был создан аккаунт в системе. \n Логин: " + toEmail + "\n Пароль: " + passwordhash;
+                    mess.Body = body;
+
+                    client.Send(mess);
+                }
                 return RedirectToAction("Index");
             }
 
@@ -185,6 +201,11 @@ namespace WebApplication.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             users user = db.users.Find(id);
+            String toEmail = null;
+            if (user.contactID != null && db.contacts.Find(user.contactID).email != null)
+            {
+                toEmail = db.contacts.Find(user.contactID).email;
+            }
             db.users.Remove(user);
             IEnumerable<projects> projects = db.projects.Where(p => p.createrID == id);
             foreach (projects p in projects)
@@ -192,6 +213,21 @@ namespace WebApplication.Controllers
                 p.createrID = null;
             }
             db.SaveChanges();
+
+            if (toEmail != null)
+            {
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                client.Credentials = new NetworkCredential("ivankamaev94@gmail.com", "231564897Qwerty");
+                client.EnableSsl = true;
+                MailMessage mess = new MailMessage();
+                mess.From = new MailAddress("ivankamaev94@gmail.com");
+                mess.To.Add(new MailAddress(toEmail));
+                mess.Subject = "Аккаунт в системе";
+                String body = "Ваш аккаунт был удален из системы.";
+                mess.Body = body;
+                client.Send(mess);
+            }
+
             return RedirectToAction("Index");
         }
 

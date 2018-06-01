@@ -18,7 +18,7 @@
                 <dd>
                     @if (Model.arrival != null)
                     {
-                        @Convert.ToDateTime(Model.arrival).ToString("dd.MM.yyyy hh:mm")
+                        @Convert.ToDateTime(Model.arrival).ToString("dd.MM.yyyy HH:mm")
                     }
                 </dd>
 
@@ -26,7 +26,7 @@
                 <dd>
                     @if (Model.installation != null)
                     {
-                        @Convert.ToDateTime(Model.installation).ToString("dd.MM.yyyy hh:mm")
+                        @Convert.ToDateTime(Model.installation).ToString("dd.MM.yyyy HH:mm")
                     }
                 </dd>
 
@@ -34,7 +34,7 @@
                 <dd>
                     @if (Model.rehearsal != null)
                     {
-                        @Convert.ToDateTime(Model.rehearsal).ToString("dd.MM.yyyy hh:mm")
+                        @Convert.ToDateTime(Model.rehearsal).ToString("dd.MM.yyyy HH:mm")
                     }
                 </dd>
 
@@ -42,7 +42,7 @@
                 <dd>
                     @if (Model.start != null)
                     {
-                        @Convert.ToDateTime(Model.start).ToString("dd.MM.yyyy hh:mm")
+                        @Convert.ToDateTime(Model.start).ToString("dd.MM.yyyy HH:mm")
                     }
                 </dd>
 
@@ -50,7 +50,7 @@
                 <dd>
                     @if (Model.finish != null)
                     {
-                        @Convert.ToDateTime(Model.finish).ToString("dd.MM.yyyy hh:mm")
+                        @Convert.ToDateTime(Model.finish).ToString("dd.MM.yyyy HH:mm")
                     }
                 </dd>
 
@@ -58,7 +58,7 @@
                 <dd>
                     @if (Model.deinstallation != null)
                     {
-                        @Convert.ToDateTime(Model.deinstallation).ToString("dd.MM.yyyy hh:mm")
+                        @Convert.ToDateTime(Model.deinstallation).ToString("dd.MM.yyyy HH:mm")
                     }
                 </dd>
 
@@ -66,7 +66,7 @@
                 <dd>
                     @if (Model.departure != null)
                     {
-                        @Convert.ToDateTime(Model.departure).ToString("dd.MM.yyyy hh:mm")
+                        @Convert.ToDateTime(Model.departure).ToString("dd.MM.yyyy HH:mm")
                     }
                 </dd>
 
@@ -160,13 +160,13 @@
             }
             else
             {
-                <table class="table-bordered" width="50%">
-                    <caption>Список оборудования</caption>
+                <table class="table-bordered" cellpadding="5">
+                    <caption ><b>Список оборудования</b></caption>
                     <tr>
-                        <th>Наименование</th>
-                        <th>Фирма</th>
-                        <th>Модель</th>
-                        <th>Количество</th>
+                        <th align="center">Наименование</th>
+                        <th align="center">Фирма</th>
+                        <th align="center">Модель</th>
+                        <th align="center">Количество</th>
                     </tr>
                     @for (int i = 0; i < ViewBag.model.Count; i++)
                     {

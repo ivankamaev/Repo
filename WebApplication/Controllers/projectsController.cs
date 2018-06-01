@@ -10,6 +10,7 @@ using WebApplication.Models;
 using WebApplication.Attributes;
 using WebApplication.Controllers;
 using System.Web.Security;
+using System.Net.Mail;
 
 
 namespace WebApplication1.Controllers
@@ -17,7 +18,6 @@ namespace WebApplication1.Controllers
     [UserAuthorize]
     public class projectsController : Controller
     {
-        //private u0416457_systemEntities db = new u0416457_systemEntities();
         private u0516067_coopersystemEntities db = new u0516067_coopersystemEntities();
 
         public ActionResult Index(string sortOrder)
@@ -179,6 +179,92 @@ namespace WebApplication1.Controllers
             {
                 db.projects.Add(project);
                 db.SaveChanges();
+
+                if (project.executorID != null && db.contacts.Find(project.executorID).email != null)
+                {
+                    String toEmail = db.contacts.Find(project.executorID).email;
+                    SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                    client.Credentials = new NetworkCredential("ivankamaev94@gmail.com", "231564897Qwerty");
+                    client.EnableSsl = true;
+                    MailMessage mess = new MailMessage();
+                    mess.From = new MailAddress("ivankamaev94@gmail.com");
+                    mess.To.Add(new MailAddress(toEmail));
+                    mess.Subject = "Новый проект";
+                    String body = "Создан новый проект с вашим участием. <br><br> <table cellspacing=\"0\" cellpadding=\"10\"> <caption><b>Информация о проекте</b></caption>";
+                    if (project.createrID != null && (db.contacts.Find(db.users.Find(project.createrID).contactID).lastname != null || db.contacts.Find(db.users.Find(project.createrID).contactID).name != null))
+                    {
+                        body += "<tr><td><b>Создатель</b></td><td>" + db.contacts.Find(db.users.Find(project.createrID).contactID).lastname + " " + db.contacts.Find(db.users.Find(project.createrID).contactID).name + "</td></tr>";
+                    }
+                    if (project.executorID != null && (db.contacts.Find(project.executorID).lastname != null || db.contacts.Find(project.executorID).name != null))
+                    {
+                        body += "<tr><td><b>Исполнитель</b></td><td>" + db.contacts.Find(project.executorID).lastname + " " + db.contacts.Find(project.executorID).name + "</td></tr>";
+                    }
+                    if (project.arrival != null)
+                    {
+                        body += "<tr><td><b>Заезд</b></td><td>" + Convert.ToDateTime(project.arrival).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+                    }
+                    if (project.installation != null)
+                    {
+                        body += "<tr><td><b>Монтаж</b></td><td>" + Convert.ToDateTime(project.installation).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+                    }
+                    if (project.rehearsal != null)
+                    {
+                        body += "<tr><td><b>Репетиции</b></td><td>" + Convert.ToDateTime(project.rehearsal).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+                    }
+                    if (project.start != null)
+                    {
+                        body += "<tr><td><b>Начало</b></td><td>" + Convert.ToDateTime(project.start).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+                    }
+                    if (project.finish != null)
+                    {
+                        body += "<tr><td><b>Конец</b></td><td>" + Convert.ToDateTime(project.finish).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+                    }
+                    if (project.deinstallation != null)
+                    {
+                        body += "<tr><td><b>Демонтаж</b></td><td>" + Convert.ToDateTime(project.deinstallation).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+                    }
+                    if (project.departure != null)
+                    {
+                        body += "<tr><td><b>Отъезд</b></td><td>" + Convert.ToDateTime(project.departure).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+                    }
+                    if (project.placeID != null && db.places.Find(project.placeID).name != null)
+                    {
+                        body += "<tr><td><b>Место</b></td><td>" + db.places.Find(project.placeID).name + "</td></tr>";
+                    }
+                    if (project.worktype != null)
+                    {
+                        body += "<tr><td><b>Функция на проекте</b></td><td>" + project.worktype + "</td></tr>";
+                    }
+                    if (project.type != null)
+                    {
+                        body += "<tr><td><b>Тип проекта</b></td><td>" + project.type + "</td></tr>";
+                    }
+                    if (project.managerID != null && (db.contacts.Find(project.managerID).lastname != null || db.contacts.Find(project.managerID).name != null))
+                    {
+                        body += "<tr><td><b>Организатор</b></td><td>" + db.contacts.Find(project.managerID).lastname + " " + db.contacts.Find(project.managerID).name + "</td></tr>";
+                    }
+                    if (project.clientID != null && (db.contacts.Find(project.clientID).lastname != null || db.contacts.Find(project.clientID).name != null))
+                    {
+                        body += "<tr><td><b>Клиент</b></td><td>" + db.contacts.Find(project.clientID).lastname + " " + db.contacts.Find(project.clientID).name + "</td></tr>";
+                    }
+                    if (project.showmanID != null && (db.contacts.Find(project.showmanID).lastname != null || db.contacts.Find(project.showmanID).name != null))
+                    {
+                        body += "<tr><td><b>Ведущий</b></td><td>" + db.contacts.Find(project.showmanID).lastname + " " + db.contacts.Find(project.showmanID).name + "</td></tr>";
+                    }
+                    if (project.content != null)
+                    {
+                        body += "<tr><td><b>Контент</b></td><td>" + project.content + "</td></tr>";
+                    }
+                    if (project.note != null)
+                    {
+                        body += "<tr><td><b>Заметки</b></td><td>" + project.note + "</td></tr>";
+                    }
+                    body += "</table>";
+                    mess.Body = body;
+                    mess.IsBodyHtml = true;
+                    client.Send(mess);
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -319,6 +405,82 @@ namespace WebApplication1.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             projects project = db.projects.Find(id);
+            String toEmail = null;
+            if (project.executorID != null && db.contacts.Find(project.executorID).email != null)
+            {
+                toEmail = db.contacts.Find(project.executorID).email;
+            }
+            String body = "Проект с вашим участием удален. <br><br> <table cellspacing=\"0\" cellpadding=\"10\"> <caption><b>Информация о проекте</b></caption>";
+            if (project.createrID != null && (db.contacts.Find(db.users.Find(project.createrID).contactID).lastname != null || db.contacts.Find(db.users.Find(project.createrID).contactID).name != null))
+            {
+                body += "<tr><td><b>Создатель</b></td><td>" + db.contacts.Find(db.users.Find(project.createrID).contactID).lastname + " " + db.contacts.Find(db.users.Find(project.createrID).contactID).name + "</td></tr>";
+            }
+            if (project.executorID != null && (db.contacts.Find(project.executorID).lastname != null || db.contacts.Find(project.executorID).name != null))
+            {
+                body += "<tr><td><b>Исполнитель</b></td><td>" + db.contacts.Find(project.executorID).lastname + " " + db.contacts.Find(project.executorID).name + "</td></tr>";
+            }
+            if (project.arrival != null)
+            {
+                body += "<tr><td><b>Заезд</b></td><td>" + Convert.ToDateTime(project.arrival).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+            }
+            if (project.installation != null)
+            {
+                body += "<tr><td><b>Монтаж</b></td><td>" + Convert.ToDateTime(project.installation).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+            }
+            if (project.rehearsal != null)
+            {
+                body += "<tr><td><b>Репетиции</b></td><td>" + Convert.ToDateTime(project.rehearsal).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+            }
+            if (project.start != null)
+            {
+                body += "<tr><td><b>Начало</b></td><td>" + Convert.ToDateTime(project.start).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+            }
+            if (project.finish != null)
+            {
+                body += "<tr><td><b>Конец</b></td><td>" + Convert.ToDateTime(project.finish).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+            }
+            if (project.deinstallation != null)
+            {
+                body += "<tr><td><b>Демонтаж</b></td><td>" + Convert.ToDateTime(project.deinstallation).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+            }
+            if (project.departure != null)
+            {
+                body += "<tr><td><b>Отъезд</b></td><td>" + Convert.ToDateTime(project.departure).ToString("dd.MM.yyyy HH:mm") + "</td></tr>";
+            }
+            if (project.placeID != null && db.places.Find(project.placeID).name != null)
+            {
+                body += "<tr><td><b>Место</b></td><td>" + db.places.Find(project.placeID).name + "</td></tr>";
+            }
+            if (project.worktype != null)
+            {
+                body += "<tr><td><b>Функция на проекте</b></td><td>" + project.worktype + "</td></tr>";
+            }
+            if (project.type != null)
+            {
+                body += "<tr><td><b>Тип проекта</b></td><td>" + project.type + "</td></tr>";
+            }
+            if (project.managerID != null && (db.contacts.Find(project.managerID).lastname != null || db.contacts.Find(project.managerID).name != null))
+            {
+                body += "<tr><td><b>Организатор</b></td><td>" + db.contacts.Find(project.managerID).lastname + " " + db.contacts.Find(project.managerID).name + "</td></tr>";
+            }
+            if (project.clientID != null && (db.contacts.Find(project.clientID).lastname != null || db.contacts.Find(project.clientID).name != null))
+            {
+                body += "<tr><td><b>Клиент</b></td><td>" + db.contacts.Find(project.clientID).lastname + " " + db.contacts.Find(project.clientID).name + "</td></tr>";
+            }
+            if (project.showmanID != null && (db.contacts.Find(project.showmanID).lastname != null || db.contacts.Find(project.showmanID).name != null))
+            {
+                body += "<tr><td><b>Ведущий</b></td><td>" + db.contacts.Find(project.showmanID).lastname + " " + db.contacts.Find(project.showmanID).name + "</td></tr>";
+            }
+            if (project.content != null)
+            {
+                body += "<tr><td><b>Контент</b></td><td>" + project.content + "</td></tr>";
+            }
+            if (project.note != null)
+            {
+                body += "<tr><td><b>Заметки</b></td><td>" + project.note + "</td></tr>";
+            }
+            body += "</table>";
+
             db.projects.Remove(project);
             IEnumerable<project_equipment> project_equipment = db.project_equipment.Where(p => p.projectID == id);
             foreach (project_equipment pe in project_equipment)
@@ -326,6 +488,21 @@ namespace WebApplication1.Controllers
                 db.project_equipment.Remove(pe);
             }
             db.SaveChanges();
+
+            if (toEmail != null)
+            {
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+                client.Credentials = new NetworkCredential("ivankamaev94@gmail.com", "231564897Qwerty");
+                client.EnableSsl = true;
+                MailMessage mess = new MailMessage();
+                mess.From = new MailAddress("ivankamaev94@gmail.com");
+                mess.To.Add(new MailAddress(toEmail));
+                mess.Subject = "Проект удален";
+                mess.Body = body;
+                mess.IsBodyHtml = true;
+                client.Send(mess);
+            }
+
             return RedirectToAction("Index");
         }
 
